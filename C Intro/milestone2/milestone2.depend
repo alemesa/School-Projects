@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1470704406 source:c:\users\alejandro\dropbox\c_projects\milestone2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<ctype.h>
+

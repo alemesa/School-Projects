@@ -1,0 +1,108 @@
+     FMARKSDSP2 CF   E             WORKSTN
+
+      /FREE
+            *IN50 = *OFF;
+            EXFMT RECORD1;
+            PASS = 0;
+            FAIL = 0;
+            QUERIES = 0;
+            AVERAGE = 0;
+                  DOW NOT(*IN03);
+                       EXSR GETGRADE;
+                       WRITE RECORD1;
+                       *IN31 = *OFF;
+                       *IN32 = *OFF;
+                       *IN33 = *OFF;
+                       *IN50 = *OFF;
+                       *IN51 = *OFF;
+                       EXFMT RECORD2;
+                       *IN40 = *OFF;
+                       AVERAGE = AVERAGE * QUERIES;
+                       QUERIES = QUERIES + 1;
+                       AVERAGE = (AVERAGE + NUMGRADE)/QUERIES;
+                       IF *IN03 = *OFF;
+                               EXSR CLEARMARKS;
+                               EXFMT RECORD1;
+                       ENDIF;
+                       IF *IN03 = *ON;
+                           EXSR CLEARMARKS;
+                           EXFMT RECORD3;
+                           RETURN;
+                       ENDIF;
+                  ENDDO;
+            *INLR = *ON;
+            RETURN;
+       BEGSR GETGRADE;
+       *IN50 = *ON;
+
+
+          IF TEST1 < TEST2 AND TEST1 < TEST3;
+            *IN31 = *ON;
+             TESTOVRALL = (TEST2 + TEST3)/2;
+          ENDIF;
+          IF TEST2 < TEST1 AND TEST2 < TEST3 ;
+            *IN32 = *ON;
+             TESTOVRALL = (TEST1 + TEST3)/2;
+          ENDIF;
+          IF TEST3 < TEST1 AND TEST3 < TEST2 ;
+            *IN33 = *ON;
+             TESTOVRALL = (TEST1 + TEST2)/2;
+          ENDIF;
+          IF TEST1 = TEST2 AND *IN33 = *OFF;
+             *IN31 = *ON;
+             TESTOVRALL = (TEST2 + TEST3)/2;
+          ENDIF;
+          IF TEST1 = TEST3 AND *IN32 = *OFF;
+             *IN31 = *ON;
+             TESTOVRALL = (TEST2 + TEST3)/2;
+          ENDIF;
+          IF TEST3 = TEST2 AND *IN31 = *OFF;
+             *IN32 = *ON;
+             TESTOVRALL = (TEST1 + TEST3)/2;
+          ENDIF;
+          NUMGRADE = (LABS/30)*30 + (TESTOVRALL)/100*35 + EXAM/100*35;
+          SELECT;
+          When NUMGRADE >= 90;
+                LETGRADE = 'A+';
+          When NUMGRADE >= 80;
+                LETGRADE = 'A';
+          When NUMGRADE >= 75;
+                LETGRADE = 'B+';
+          When NUMGRADE >= 70;
+                LETGRADE = 'B';
+          When NUMGRADE >= 65;
+                LETGRADE = 'C+';
+          When NUMGRADE >= 60;
+                LETGRADE = 'C';
+          When NUMGRADE >= 55;
+                LETGRADE = 'D+';
+          WHEN NUMGRADE >=50;
+                LETGRADE = 'D';
+          When NUMGRADE < 49;
+                LETGRADE = 'F';
+          ENDSL;
+
+          IF EXAM < 55 AND TESTOVRALL > 55;
+             *IN51 = *ON;
+             LETGRADE = 'F';
+             FAIL = FAIL + 1;
+          ENDIF;
+
+          IF TESTOVRALL < 55;
+            *IN40 = *ON;
+            LETGRADE = 'F';
+            FAIL = FAIL + 1;
+          ENDIF;
+          IF TESTOVRALL >= 55 AND EXAM >= 55;
+            PASS = PASS + 1;
+          ENDIF;
+       ENDSR;
+
+       BEGSR CLEARMARKS;
+          TEST1 = 0;
+          TEST2 = 0;
+          TEST3 = 0;
+          LABS = 0;
+          EXAM = 0;
+       ENDSR;
+      /END-FREE 

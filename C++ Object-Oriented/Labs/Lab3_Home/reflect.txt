@@ -1,0 +1,23 @@
+////////////////////////////////////////////////////////////////
+// Workshop     3 At Home
+// Author	Alejandro Mesa Suarez
+// Number ID    0385151
+// Email        amesasuarez@myseneca.ca
+////////////////////////////////////////////////////////////////
+
+
+1) What happens to dynamic memory if it is not deallocated?
+
+The Operative System takes that memory back, and adds that space to a list to be used for another resource.
+But is stills best practices to clear all the resources after using it, also when you start and allocate memory
+practically save that memory for you and those resources are untouchable.
+
+2) What are the two methods of formatting IO stream data?
+The <iostream> library uses 4 operators cin, cout, cerr, clog, the two methods for formatting IO stream data are
+cin which is the standart input and cout which is the standard output
+
+3) Why was dynamic memory required in the main() function of w3_in_lab.cpp to build the solution? 
+We use dinamically memory in that case because is a way of reuse the same section on memory, "the stack", basically
+when we allocate memory we run the function that is in the module Weather.cpp and returns something and after we reuse
+the same memory location to get a new date, low temperature and high temperature, the memory is constantly overwritten
+as the functions returns data and runs again

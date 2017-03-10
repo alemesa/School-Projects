@@ -1,0 +1,25 @@
+Script started on Thu 13 Oct 2016 05:26:23 AM EDT
+amesasuarez@matrix:~/OOP_Labs/Lab3_Lab> w3
+Weather Data
+=====================
+Days of Weather: 3
+Enter date: Oct/1
+Enter high: 15
+Enter low : 10
+Enter date: Nov/13
+Enter high: 10
+Enter low : 1.1
+Enter date: Dec/15
+Enter high: 5.5
+Enter low : -6.5
+
+Weather report:
+Date        high  low
+======================
+Oct/1_______15.0__10.0
+Nov/13______10.0___1.1
+Dec/15_______5.5__-6.5
+amesasuarez@matrix:~/OOP_Labs/Lab3_Lab> exit
+exit
+
+Script done on Thu 13 Oct 2016 05:26:49 AM EDT

@@ -1,0 +1,32 @@
+////////////////////////////////////////////////////////////////
+// Workshop     #4 Constructors
+// Author	    Alejandro Mesa Suarez
+// Number ID    0385151
+// Email        amesasuarez@myseneca.ca
+////////////////////////////////////////////////////////////////
+
+
+1)	What is meant by a safe empty state?  
+
+Safe empty state is when we initialize the variables of an object in a constructor , so that the object has 
+a well defined state when is created. Basically we are avoid leaving those variables empty.
+
+  a.	What is the safe empty state in your program?
+  
+	On our program the safe empty state is declare through the function setEmpty which initilize
+	all the elements of the object to 0;
+	
+  b.	Why did you select this state?
+	We select this state because we want to use that data and to avoid breaking the function or 
+	the program	we initilalize those to a safety state.
+  
+  
+2)	Describe a case where having multiple Enrollment constructors would simplify the code of clients that use it.
+	A case scenario will be to create multiple constructors to handle data input from clients,
+	for example if the user doesn't put a certain field, delegate the task to another constructor and so on
+	Example:
+		struct Student{
+			Enrollment(int id) : y(n) {}
+			Enrollment() : ID(01) {}
+			int id;
+		}

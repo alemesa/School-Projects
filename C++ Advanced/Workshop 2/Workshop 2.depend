@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1488681813 source:c:\users\aleja\google drive\seneca\oop345 - c++\workshops\workshop 2\station.cpp
+	<iostream>
+	<string>
+	<fstream>
+	"Station.h"
+
+1488682592 c:\users\aleja\google drive\seneca\oop345 - c++\workshops\workshop 2\station.h
+	<string>
+	<fstream>
+
+1488681153 source:c:\users\aleja\google drive\seneca\oop345 - c++\workshops\workshop 2\w2.cpp
+	<iostream>
+	"Stations.h"
+
+1488681905 c:\users\aleja\google drive\seneca\oop345 - c++\workshops\workshop 2\stations.h
+	<string>
+	<fstream>
+	"Station.h"
+

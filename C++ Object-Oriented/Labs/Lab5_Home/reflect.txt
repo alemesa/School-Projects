@@ -1,0 +1,18 @@
+////////////////////////////////////////////////////////////////
+// Workshop     #5
+// Author	Alejandro Mesa Suarez
+// Number ID    0385151
+// Email        amesasuarez@myseneca.ca
+////////////////////////////////////////////////////////////////
+
+Question 1--->  Function allocateAndCopy, takes 3 parameters, 2 integers and a char type, then sets a bool called valid depending if those 
+parameters pass the function isValid(), if is valid, true in this case, it will copy the values to a new phone. Then it will delete 
+the char type for new allocations and copy the new values , finally will return the boolean valid.
+
+Question 2---> This is part of the rule of Three, where in almost every case when we need copy constructor, assignment operator or destructor
+we need the other 2 and we're for usre using memory allocation. When we allocate memory with a constructor we need a destructor to avoid memory leaks.
+ We use a copy constructor because if we just copy an object and we use the destructor, that memory will get destroyed and therefore we need something 
+to copy those values on another memory lcoation, that's why we code a copy constructor and the same principle extends to the assignmet operator.
+
+
+

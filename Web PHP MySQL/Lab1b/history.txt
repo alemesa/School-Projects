@@ -1,0 +1,200 @@
+Script started on Wed Feb  8 22:36:29 2017
+bash-4.3$ whoami
+int322_171d16
+bash-4.3$ history
+    1  cd /tmp
+    2  mkdir int322_171d16
+    3  ls
+    4  cd int322_171d16
+    5  ls
+    6  lynx http://httpd.apache.org/download.cgi
+    7  ls
+    8  tar zxvf *31.tar.gz
+    9  lynx http://httpd.apache.org/download.cgi
+   10  ls
+   11  lynx http://httpd.apache.org/download.cgi
+   12  ls
+   13  lynx http://httpd.apache.org/download.cgi
+   14  ls
+   15  tar zxvf *31.tar.gz
+   16  tar zxvf *32.tar.gz
+   17  ls
+   18  cd httpd-2.2.32/
+   19  ./configure --prefix=/home/int322_171d16/apache
+   20  make
+   21  make install
+   22  ~
+   23  cd ~
+   24  ls
+   25  cd apache
+   26  ls
+   27  cd conf
+   28  ls
+   29  vi httpd.conf
+   30  ls
+   31  cd..
+   32  chmod 700 bin logs conf includes modules
+   33  chmod 700 bin logs conf include modules
+   34  cdmod 711 cgi-bin
+   35  chmod 711 cgi-bin
+   36  cd conf
+   37  ls
+   38  vi httpd.conf 
+   39  cd..
+   40  cd bin
+   41  ./apachect1 start
+   42  ./apachectl start
+   43  top
+   44  jobs
+   45  job
+   46  ls
+   47  PID
+   48  LS
+   49  ls
+   50  top
+   51  apachectl -k stop
+   52  apachectl stop
+   53  ls
+   54  rm -rf apache
+   55  ls
+   56  mkdir apache
+   57  cd /tmp
+   58  ls
+   59  mkdir int322_171d16
+   60  cd int322_171d16/
+   61  lynx http://httpd.apache.org/download.cgi
+   62  y
+   63  ls
+   64  lynx http://php.net/get/php-5.5.38.tar.gz/from/a/mirror
+   65  ls
+   66  lynx http://fossies.org/linux/www/php-5.5.38.tar.gz
+   67  y
+   68  ls
+   69  lynx http://php.net/get/php-5.5.38.tar.gz/from/a/mirror
+   70  ls
+   71  tar zxvf httpd-2.2.32.tar.gz 
+   72  ls
+   73  tar zxvf php-7.1.1.tar.gz 
+   74  cd..
+   75  ls
+   76  cd int322_171d16/
+   77  ls
+   78  cd httpd-2.2.32/
+   79  ls
+   80  ./configure --prefix=/home/yourhomedirectory/yourserverroot --enable-so
+   81  make
+   82  make install
+   83  cd ~
+   84  ls
+   85  cd apache
+   86  ls
+   87  cd /tmp
+   88  ls
+   89  cd int322_171d16/
+   90  ls
+   91  ./configure --prefix=/home/int322_171d16/apache --enable-so
+   92  cd..
+   93  ls
+   94  cd ~
+   95  ls
+   96  tree
+   97  cd /tmp
+   98  ls
+   99  cd int322_171d16/
+  100  ls
+  101  cd httpd-2.2.32/
+  102  ./configure --prefix=/home/int322_171d16/apache --enable-so
+  103  make
+  104  make install
+  105  cd ~
+  106  ls
+  107  cd apache
+  108  ls
+  109  cd conf
+  110  ls
+  111  vi httpd.conf 
+  112  ls
+  113  vi httpd.conf 
+  114  cd..
+  115  cd bin
+  116  ./apachectl start
+  117  ./apachect1 start
+  118  ./apachectl start
+  119  cd ./apachectl
+  120  ls
+  121  cd..
+  122  ls
+  123  rm -r apache
+  124  cd /tmp
+  125  ls
+  126  cd int322_171d16/
+  127  ls
+  128  rm -r httpd-2.2.32
+  129  rm -r php-7.1.1
+  130  ls
+  131  tar zxvf httpd-2.2.32.tar.gz 
+  132  tar zxvf php-7.1.1.tar.gz 
+  133  ls
+  134  cd httpd-2.2.32/
+  135  ls
+  136  cd ~
+  137  ls
+  138  mkdir apache
+  139  cd /tmp
+  140  ls
+  141  cd int322_171d16/
+  142  cd httpd-2.2.32/
+  143  ls
+  144  ./configure --prefix=/home/int322_171d16/apache --enable-so
+  145  make
+  146  make install
+  147  cd ..
+  148  cd ~
+  149  ls
+  150  cd apache/conf
+  151  vi httpd.conf 
+  152  ls
+  153  cd..
+  154  cd bin
+  155  ls
+  156  ./apachectl start
+  157  ./apachectl stop
+  158  cd /tmp
+  159  ls
+  160  cd int322_171d16/
+  161  ls
+  162  cd php-7.1.1/
+  163  ls
+  164  ./configure --with-apxs2=/home/yourusername/yourserverroot/bin/apxs --with-mysqli --prefix=/home/yourusername/yourserveroot
+  165  ./configure --with-apxs2=/home/int322_171d16/apache/bin/apxs --with-mysqli --prefix=/home/int322_171d16/apache
+  166  make
+  167  make install
+  168  ./apachectl start
+  169  cd..
+  170  cd apache
+  171  ./apachectl start
+  172  cd apache
+  173  cd ~
+  174  ls
+  175  cd apache
+  176  ls
+  177  ./apachectl start
+  178  cd bin
+  179  ./apachectl start
+  180  cd..
+  181  ls
+  182  cd cgi-bin/
+  183  touch admin.php
+  184  ls
+  185  vi admin.php 
+  186  ls
+  187  chmod 755 admin.php
+  188  history
+  189  history
+  190  exit
+  191  whoami
+  192  history
+bash-4.3$ exit
+exit
+
+Script done on Wed Feb  8 22:36:45 2017

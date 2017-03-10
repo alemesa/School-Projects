@@ -1,0 +1,146 @@
+/*********************************************************************************
+*
+* INT222 – Lab #3b
+*
+* I declare that this assignment is my own work in accordance with Seneca
+* Academic Policy. No part of this assignment has been copied manually or
+* electronically from any other source (including web sites) or distributed to
+* other students.
+*
+* Name: Alejandro Mesa Suarez   Student ID: 038515151    Date: October17, 2016
+*
+********************************************************************************/
+/*Step 1*/
+/* Select all elements with class “main-container”
+and adjust it’s width and fix the margins */
+
+.main-container {
+    max-width: 960px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Select all elements that are child to an element with class
+“main-container” and adjust it’s width and float it to the left
+to create a two side webpage */
+
+.main-container nav {
+    width: 30%;
+    float: left;
+}
+/* Select all elements with class ".main" that are child to an
+element with class “main-container” and adjust it’s width and
+float it to the left to create a two side webpage */
+
+.main-container .main {
+    width: 70%;
+    float: right;
+}
+/* Select the header elements that are child to an element with class
+“main-container” and adjust padding all around and border and margin
+for bottom only and change the background-color */
+
+.main-container header {
+    padding: 10px;
+    background-color: #eeeeee;
+    border-bottom: 1px thick #cccccc;
+    margin-bottom: 30px;
+}
+/* Select the h1 elements that are child to a header element that's
+child to another element with class “main-container” and set the text
+in the middle, change the font size and set the width to 70% while
+floating the element to the right, so it's in the top right corner
+and change margin top too */
+
+.main-container header h1 {
+    width: 70%;
+    font-size: 24px;
+    float: right;
+    text-align: right;
+    ;
+    margin-top: 10px;
+}
+/* Select the footer elements that are child to an element with class
+“main-container” and adjust padding all around and border for top
+only, change the background-color, change the font-size and clear
+both sides so nothing is at the left or the right of the footer */
+
+.main-container footer {
+    clear: both;
+    padding: 20px 10px 20px 10px;
+    background-color: #eeeeee;
+    border-top: 1px thick #cccccc;
+    font-size: 13px;
+}
+/*Step 2*/
+/*Adjust the width, and the font properties of the element with id
+"logo" */
+
+#logo {
+    width: 30%;
+    font-size: 25px;
+    font-weight: bold;
+}
+/*Select the img elements that are child to another element with an id
+"logo" and change the width and align the image in the middle*/
+
+#logo img {
+    width: 94px;
+    vertical-align: middle;
+}
+/*Eliminate the bullet points of every element ul that is a child
+to a nav element*/
+
+nav ul {
+    list-style-type: none;
+}
+/*Eliminate the bullet points of every element a that is a child
+to a ul element that is a child to a nav element, then change the display
+to block and add padding of 5px all around*/
+
+nav ul a {
+    display: block;
+    text-decoration: none;
+    padding: 5px;
+}
+/*Step 3*/
+/*Pick the divs with class "province" and adjust the width,
+push everything to the left whjile adding amrgin and height*/
+
+div.province {
+    width: 30%;
+    float: left;
+    margin: 8px;
+    height: 310px;
+}
+/*Pick the elements with class "description" that is a child to a
+div with class "province" and adjust the max-height, change margin top
+and bottom. add a scroll bar when the element doesn't fit the y axis
+and hide it on the x axis*/
+
+div.province .description {
+    max-height: 165px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+/*Pick all the a elements that are child to a div with class "province"
+, then change the background color and color, remove all text decoration
+display block (so it takes the full-width) and align the text to the
+center and add 5px of padding all around */
+
+div.province a {
+    display: block;
+    text-align: center;
+    background-color: #555555;
+    color: #eeeeee;
+    text-decoration: none;
+    padding: 5px;
+}
+/*Pick all the images with class "flag" and change the width to 100%*/
+
+img.flag {
+    width: 100%;
+}

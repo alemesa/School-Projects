@@ -1,0 +1,168 @@
+/*********************************************************************************
+*
+* INT222 � Lab #3a
+*
+* I declare that this assignment is my own work in accordance with Seneca
+* Academic Policy. No part of this assignment has been copied manually or
+* electronically from any other source (including web sites) or distributed to
+* other students.
+*
+* Name: Alejandro Mesa    Student ID: 38515151    Date: Oct-15-2016
+*
+********************************************************************************/
+/*Task 1*/
+
+p.home_p {
+    font-weight: 400;
+    text-align: center;
+}
+p.home_p a {
+    color: blue;
+    font-weight: bold;
+    font-variant: small-caps;
+}
+p.home_p a:hover {
+    color: white;
+    background-color: blue;
+}
+p.home_p a:visited {
+    background-color: white;
+    color: purple;
+}
+/*Task 2*/
+
+.list {
+    border: 2px dotted black;
+    background-image: url(http://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/tor.png);
+    background-repeat: no-repeat;
+    margin-left: auto;
+    margin-right: auto;
+    background-position: right top;
+}
+.list li {
+    padding: 5px;
+    text-decoration: underline;
+    color: black;
+    font-size: 1.2em;
+}
+/*Task 3*/
+
+td,
+th {
+    margin: 4px;
+    padding: 4px;
+}
+#table_1 td,
+#table1 th {
+    border: 1px solid black;
+}
+#table1 th {
+    border: 1px solid black;
+}
+#table_2 {
+    border: 2px;
+    border-width: medium;
+    color: black;
+    border-color: black;
+    border-width: 2px;
+}
+#table_2 caption {
+    font-weight: bold;
+    color: white;
+    background-color: #03A9F4;
+}
+#table_2 thead {
+    color: white;
+    background-color: #00C853;
+}
+#table_2 tbody {
+    color: #212121;
+    background-color: white;
+}
+#table_2 tfoot {
+    color: white;
+    background-color: #673AB7;
+}
+/*Task 4*/
+
+#image1 {
+    width: 30%;
+    height: 30%;
+}
+#image2 {
+    width: 20%;
+    height: 20%;
+}
+/*Task 5*/
+
+figcaption {
+    font-weight: bold;
+    font-style: italic;
+}
+#audio_sample {
+    border: 2px solid #3F51B5;
+    text-align: center;
+    margin: 0 auto;
+    width: 500px
+}
+/*Task 6*/
+
+#video_sample {
+    border: 3px solid #FF5722;
+    margin: 0 auto;
+    width: 500px
+}
+video {
+    width: 500px;
+    height: auto;
+}
+/*Task 7*/
+
+.awesome_div {
+    width: 80%;
+    margin: 0 auto;
+}
+.another_awesome_div {
+    width: 90%;
+    margin: 0 auto;
+}
+.awesome_header {
+    text-transform: uppercase;
+    color: #3C3C3C;
+    background-color: #FCCD09;
+}
+.not_so_awesome_header {
+    text-transform: uppercase;
+    color: #FEFF00;
+    background-color: #6772BC;
+}
+#the_sting {
+    background-color: black;
+    color: white;
+    font-style: italic;
+    font-weight: bold;
+}
+.seneca_red {
+    background-color: white;
+    color: red;
+    font-weight: bold;
+}
+.seneca_red:hover {
+    color: white;
+    background: red;
+}
+#city {
+    text-transform: uppercase;
+    font-weight: 500;
+    color: white;
+    background-color: black;
+}
+#student_life{
+  border-radius: 30px;
+  border:2px solid #0277BD;
+  margin-top: 20px;
+}
+#history{
+  border-radius: 30px;
+  border:2px solid #d50000;
+}

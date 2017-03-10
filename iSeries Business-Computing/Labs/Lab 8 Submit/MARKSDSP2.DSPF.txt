@@ -1,0 +1,60 @@
+     A          R RECORD1
+     A                                  2 71DATE
+     A                                      EDTCDE(Y)
+     A                                  3 71TIME
+     A                                  2  2'Alejandro Mesa'
+     A                                  2 31'Marks Calculator'
+     A                                  4 22'Test 1:'
+     A                                  5 22'Test 2:'
+     A                                  6 22'Test 3:'
+     A                                  7 22'Labs:'
+     A                                  8 22'Exam:'
+     A            TEST1          3  0B  4 30RANGE(0 100)
+     A  50                                  DSPATR(PR)
+     A            TEST2          3  0B  5 30RANGE(0 100)
+     A  50                                  DSPATR(PR)
+     A            TEST3          3  0B  6 30RANGE(0 100)
+     A  50                                  DSPATR(PR)
+     A            LABS           2  0B  7 31RANGE(0 30)
+     A  50                                  DSPATR(PR)
+     A            EXAM           3  0B  8 30RANGE(0 100)
+     A  50                                  DSPATR(PR)
+     A                                  3  2USER
+     A                                  4  2SYSNAME
+     A  31                              4 37'This Test Mark Dropped'
+     A  32                                  DSPATR(PC)
+     A  32                              5 37'This Test Mark Dropped'
+     A  33                                  DSPATR(PC)
+     A  33                              6 37'This Test Mark Dropped'
+     A  51                              8 37'Automatic F with exam mark below 5-
+     A                                      5'
+     A  51                                  DSPATR(RI)
+     A  51                                  COLOR(RED)
+     A          R RECORD2                   CA03(03 'Exit')
+     A                                      OVERLAY
+     A                                  9 22'Tests:'
+     A                                 11 17'Final Mark:'
+     A                                 13 16'Final Grade:'
+     A                                 15 19'F3- Exit'
+     A            TESTOVRALL     3  0O  9 30EDTCDE(A)
+     A            NUMGRADE       3  0O 11 30EDTCDE(A)
+     A            LETGRADE       2   O 13 30
+     A  40                                  DSPATR(RI)
+     A  40                                  DSPATR(PC)
+     A  40                              9 36'Automatic F with Test Average belo-
+     A                                      w 55'
+     A          R RECORD3                   CA03(03 'Exit')
+     A                                      OVERLAY
+     A                                  1 34'Mark Statistics'
+     A                                  1 71DATE
+     A                                      EDTCDE(Y)
+     A                                  2 71TIME
+     A                                  1  2'Alejandro Mesa'
+     A                                  3 35'Pass:'
+     A                                  5 35'Fail:'
+     A                                  7 21'Total Mark Queries:'
+     A                                  9 26'Average Grade:'
+     A            PASS           3  0O  3 44EDTCDE(A)
+     A            AVERAGE        3  0O  9 44EDTCDE(A)
+     A            FAIL           3  0O  5 44EDTCDE(A)
+     A            QUERIES        3  0O  7 44EDTCDE(A) 

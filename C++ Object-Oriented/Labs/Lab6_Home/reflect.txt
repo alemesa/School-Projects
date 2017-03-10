@@ -1,0 +1,40 @@
+////////////////////////////////////////////////////////////////
+// Workshop     #6
+// Author	Alejandro Mesa Suarez
+// Number ID    0385151
+// Email        amesasuarez@myseneca.ca
+////////////////////////////////////////////////////////////////
+
+1.Explain why if possible, we should avoid using friend helper functions.
+	The most common use of friend functions is overloading <<
+	Because friends exposes the implementation of a class is dangerous while exposing private data.
+	Havign friend pierce encapsulation so it better to use it only when is necessary.
+	That's why is better to use an implementation like on At_Home part opposed to In_Lab part.
+
+2.Could the first helper operator+ (which accepts Accounts as left and right operands) 
+  implemented as a member operator? If yes, how?
+ 
+Yes we could say:
+
+	friend double operator+=(const Account& src);
+	
+	double operator+=(const Account& src) {
+		this->balance_ += src.balance_;
+		return *this;
+	}
+
+We define the operator as friend so it could access private members	
+
+
+3.In this line of your main function:
+  A = B += C += 100.01;
+the under lined operator+= that accepts a double as right operand is never defined. Explain
+ how is it, that the code compiles and runs correctly.
+
+The code compiles and runs correctly because C++ will override the operator+= to accept that double
+It is considered bad practices but it goes through.
+
+
+
+
+

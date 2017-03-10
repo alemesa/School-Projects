@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Blog</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/styles.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Quando" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
+        <link rel="shortcut icon" href="icon.png" />
+    </head>
+    <body>
+      <div class="wrapper">
+      
+
+
+
+        <header>
+
+          <div class="title">
+
+
+            <h5 class="title-name">Alejandro's Blog</h5>
+
+          </div>
+
+
+          <nav>
+            <ul class="menu">
+
+                <li><a class="active" href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li class="dropdown">
+                  <a href="">Courses</a>
+                  <div class="dropdown-list">
+
+                          <a href="https://ict.senecacollege.ca/course/INT222" target="_blank">INT222</a>
+                          <a href="https://ict.senecacollege.ca/course/OOP244" target="_blank">OOP244</a>
+                          <a href="https://ict.senecacollege.ca/course/IBC233" target="_blank">IBC233</a>
+                          <a href="https://ict.senecacollege.ca/course/DBS201" target="_blank">DBS201</a>
+                          <a href="https://ict.senecacollege.ca/course/NAT160" target="_blank">NAT160</a>
+
+                    </div>
+
+                </li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="honesty.html">Honesty</a></li>
+                <li class="dropdown">
+                  <a href="">Links</a>
+                    <div class="dropdown-list">
+                        <a href="#">Item1</a>
+                        <a href="#">Item2</a>
+
+                    </div>
+
+                </li>
+            </ul>
+            </nav>
+        </header>
+
+  <div class="page-container">
+    <div class="left-column">
+
+      <ul>
+        <li><img src="images/profile-pic.jpg" alt="My profile pic"></li>
+        <li><span>Toronto, Canada</span></li>
+        <li><a href="mailto:amesasuarez@myseneca.ca" target="_blank">My email</a></li>
+        <li><a href="https://github.com/alemesa1991" target="_blank">My Github</a></li>
+      </ul>
+
+
+
+    </div>
+    <div class="center-column">
+
+    <article id="article-1">
+
+    <div class="entry-header">
+      <h2>Sticky Footer with Flexbox</h2>
+    </div>
+    <div class="entry-content">
+    <p>Fixed heights are generally a bummer in web design. Content can
+      change. Things are flexible. Fixed heights are usually red flag
+      territory. Using flexbox for a sticky footer not only doesn't
+      require any extra elements, but allows for a variable height
+      footer.</p>
+      <span>HTML</span>
+      <pre>&lt;body>
+ &lt;div class="content">
+   content
+ &lt;/div>
+ &lt;footer class="footer">&lt;/footer>
+&lt;/body></pre>
+
+      <span>CSS</span>
+      <pre>html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+.footer {
+  grid-row-start: 2;
+  grid-row-end: 3;
+}</pre>
+
+
+    </div>
+    <div class="entry-footer">
+
+    <span class="author">Chris Coyier</span>
+    <span class="year">2015</span>
+    <span class="tags">HTML, CSS, Flexbox</span>
+
+    </div>
+
+    </article>
+
+    <article id="article-2">
+
+      <div class="entry-header">
+        <h2>How to Change a CSS Background Image’s Opacity</h2>
+      </div>
+      <div class="entry-content">
+
+        <p>With CSS and CSS3 you can do a lot of things, but setting an opacity on a CSS background is not one of them. However, if you get creative, there are a ton of creative work-arounds you to make it seem like you’re changing the CSS background image’s opacity. Both of the following methods have excellent browser support down to Internet Explorer 8.</p>
+        <h6>Method 1: Use absolute positioning and an image</h6>
+        <p>This method is exactly like it sounds. You simply use absolute positioning on an a normal img tag and make it seem like you used the CSS background-image property. All you have to do is put the image inside of a position: relative; container.</p>
+        <h6>Method 2: Using CSS Pseudo-Elements</h6>
+        <p>This method is seems simple once you see it, and is definitely my preferred method of doing this. Using CSS pseudo-elements of either :before or :after, you a div with a background image and set an opacity on it.</p>
+
+      </div>
+      <div class="entry-footer">
+        <span class="author">Nicholas Cerminara</span>
+        <span class="year">2016</span>
+        <span class="tags">CSS, Images</span>
+      </div>
+
+    </article>
+
+    <article id="article-3">
+
+      <div class="entry-header">
+      <h2>CSS Selectors You Might not know about</h2>
+      </div>
+      <div class="entry-content">
+
+        <p><span>p:first-letter</span>Style just the first letter in the paragraph</p>
+        <p><span>p:first-line</span>Style just the first line in the paragraph</p>
+        <p><span>:before</span>Add elements before the current element using content in CSS</p>
+        <p><span>:after</span>Add elements after the current element using content in CSS</p>
+<p><span>
+body > p</span>Select p tags that are only immediate children (can’t be nested)</p>
+<p><span>h1 + p</span>Select the p sibling immediately following the h1 tag</p>
+<p><span>
+body > p</span>   Select p tags that are only immediate children (can’t be nested)
+<p><span>h1 + p</span>Select the p sibling immediately following the h1 tag</p>
+<p><span>h1 ~ pre</span>Find all pre that follow the h1 tag</p>
+<p><span>tr:first-child / tr:last-child</span> First or last rows</p>
+<p><span>tr:nth-child(odd) / tr:nth-child(even)</span>	Choose every odd or even rows</p>
+<p>+ MANY MORE</p>
+
+
+      </div>
+      <div class="entry-footer">
+        <span class="author">Chris Sevilleja</span>
+        <span class="year">2016</span>
+        <span class="tags">HTML, CSS</span>
+      </div>
+
+    </article>
+
+    <article id="article-4">
+
+      <div class="entry-header">
+      <h2>Semantics on the Web</h2>
+      </div>
+      <div class="entry-content">
+
+    <p>Semantics are the implied meaning of a subject, like a word or sentence. It aids how humans (and these days, machines) interpret subject matter. On the web, HTML serves both humans and machines, suggesting the purpose of the content enclosed within an HTML tag. Since the dawn of HTML, elements have been revised and adapted based on actual usage on the web, ideally so that authors can navigate markup with ease and create carefully structured documents, and so that machines can infer the context of the wonderful collection of data we humans can read.</p>
+        <p>Until — and perhaps even after — machines can understand language and all its nuances at the same level as a human, we need HTML to help machines understand what we mean. A computer doesn’t care if you had pizza for dinner. It likely just wants to know what on earth it should do with that information.</p>
+    <p>HTML semantics are a nuanced subject, widely debated and easily open to interpretation. Not everyone agrees on the same thing right away, and this is where problems arise.</p>
+    <h6>Naming Things </h6>
+    <p>Of all the possible new element names in HTML5, the spec is pretty set on things like &lt;nav> and &lt;footer>. If you’ve used either of those as a class or id in your own markup, it’s no coincidence. Studies of the web from the likes of Google and Opera (amongst others) looked at which names people were using to hint at the purpose of a part of their HTML documents. The authors of the HTML5 spec recognised that developers needed more semantic elements and looked at what classes and IDs were already being used to convey such meaning.</p>
+    <p>Of course, it isn’t possible to use all of the names researched, and of the millions of words in the English language that could have been used, it’s better to focus on a small subset that meets the demands of the web. Yet some people feel that the spec isn’t yet doing so.</p>
+
+      </div>
+      <div class="entry-footer">
+        <span class="author">Mike Robinson</span>
+        <span class="year">2012</span>
+        <span class="tags">HTML5, Semantics</span>
+      </div>
+
+    </article>
+<div class="button">
+    <a class="back-up" href="#">Back to Top</a>
+</div>
+    </div>
+    <div class="right-column">
+      <h4>Blog entries</h4>
+      <ul>
+        <li><a href="#article-1">Article 1</a></li>
+        <li><a href="#article-2">Article 2</a></li>
+        <li><a href="#article-3">Article 3</a></li>
+        <li><a href="#article-4">Article 4</a></li>
+      </ul>
+      </div>
+  </div>
+
+    </div>
+
+
+        <footer>
+
+            <p>©2016 – Alejandro Mesa</p>
+        </footer>
+
+    </body>
+</html>

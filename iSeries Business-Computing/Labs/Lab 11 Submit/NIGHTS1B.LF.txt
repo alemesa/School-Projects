@@ -1,0 +1,4 @@
+     A          R ALLSHIFT                    PFILE(SENECAPAY/ALLSHIFT)
+     A          K EMPNUM
+     A          S WORKSHIFT                   COMP(EQ 'N')
+     A            PAYGRADE                    COMP(EQ '1') 

@@ -1,0 +1,24 @@
+////////////////////////////////////////////////////////////////
+// Workshop     #9 Inheritance & Virtual Functions
+// Author	    Alejandro Mesa Suarez
+// Number ID    0385151
+// Email        amesasuarez@myseneca.ca
+////////////////////////////////////////////////////////////////
+
+------> 1 Explain what virtual functions are.
+------------> Virtual functions are functions declared like a normal class but the definition is used from derived a class.
+			  That's when we use a pointer or reference to that class
+------> 2 What is the difference between virtual and pure virtual?
+------------>  A virtual function makes a class a base class, derived classe are able to override virual functions , these
+               virtual functions are resolved at run time. Implementation is provided 
+			   A pure virtual starts as abstract from the beginnning they can't be instantiated. Derived classes become 
+			   abstract too if they are not override. They end in 0 like virtual void whatever() = 0. In this case implementation is not provided
+------> 3 What are abstract classes and interfaces?
+------------> An abstract class happens when we declare 1 pure virutla function.
+			  The interfaces are implemented while using abstract classes
+			  Example:
+              The class Car
+              has an abstract class
+				virtual void accelerate();
+				virtual void brake();
+				virtual std::ostream& display(std::ostream& ostr) const;

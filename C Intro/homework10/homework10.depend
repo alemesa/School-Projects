@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1467095997 source:c:\users\alejandro\dropbox\c_projects\homework10\main.c
+	<stdio.h>
+	<stdlib.h>
+

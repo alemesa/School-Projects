@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1470893285 source:c:\users\alejandro\dropbox\c_projects\milestone3\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<ctype.h>
+
+1470894955 source:c:\users\spartacus-asus\dropbox\c_projects\milestone3\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<ctype.h>
+

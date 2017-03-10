@@ -1,0 +1,19 @@
+////////////////////////////////////////////////////////////////
+// Workshop     #8 Derived Classes
+// Author	Alejandro Mesa Suarez
+// Number ID    0385151
+// Email        amesasuarez@myseneca.ca
+////////////////////////////////////////////////////////////////
+
+1.	Why was it not necessary to create an isEmpty() member function? 
+--------->  We don't need to create a function because is easy to check manually. And on the program we check it only 1 time.
+2.	What privacy access level did you set for your strength member attribute?
+---------> They are all private ready to be accessed by the member function only and not by any other object directly 
+3.	How would you modify your solution to make the strength member attribute private?
+---------> Is already private
+4.	How would your solution need to be modified in order for the SuperHero::display member function object to display the deceased SuperHero’s name?  For example, the function would be modified to print “(name) the deceased superhero!”  Explain in plain English.
+---------> I will need to modify the function so it calls the losing Hero by name as is happening for the winning Hero
+5.	View line 43 in w8_at_home.cpp file. Why does this compile?  Uncomment lines 47–48. Does it compile now? Explain why or why not?
+---------> The program gives me error when I uncomment all those lines , I'm trying to create two different clases that are not defined 
+	   , so I'm getting compilation error	
+

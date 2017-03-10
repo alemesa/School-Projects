@@ -1,0 +1,58 @@
+ PGM
+ DCL &Shift *CHAR 1
+ DCL &ShiftType *CHAR 30
+ DCL &OutQ *CHAR 10
+ DCL &OutQLib *CHAR 10
+
+        RTVUSRPRF OUTQ(&OUTQ) OUTQLIB(&OUTQLIB)
+        /* CLROUTQ &OutQLib/&OutQ destroys user's output & causes +
+        CPF2207 Not authorized to use object */
+ ADDLIBLE SENECAPAY
+ MONMSG MSGID(CPF0000)
+ SNDUSRMSG MSG('1 - Day Shift, 2 - Night Shift, 3 - +
+ Afternoon Shift, 4 - All Shifts 5 - EXIT +
+ Note this program clears output queues - +
+ don''t do this in industry') +
+ MSGRPY(&SHIFT)
+ DOWHILE (&Shift *NE '5')
+ Select
+ When (&Shift = '1') Do
+ CHGVAR &ShiftType 'D A Y S H I F T'
+ OVRPRTF FILE(PAYRPT2) SPLFNAME(DAYSHIFT)
+ OVRDBF ALLSHIFT DAYS
+ CALLPRC PAYROLLP3 PARM(&ShiftType)
+ DSPSPLF FILE(DAYSHIFT) SPLNBR(*LAST)
+ ENDDO
+ When (&Shift = '2') Do
+ CHGVAR &ShiftType 'N I G H T S H I F T'
+ OVRPRTF FILE(PAYRPT2) SPLFNAME(NIGHTSHIFT)
+ OVRDBF ALLSHIFT NIGHTS
+ CALLPRC PAYROLLP3 PARM(&ShiftType)
+ DSPSPLF FILE(NIGHTSHIFT) SPLNBR(*LAST)
+ ENDDO
+ When (&Shift = '3') Do
+ CHGVAR &ShiftType 'A F T E R N O O N S H I F T'
+ OVRPRTF FILE(PAYRPT2) SPLFNAME(AFTRNSHIFT)
+ OVRDBF ALLSHIFT AFTERNOONS
+ CALLPRC PAYROLLP3 PARM(&ShiftType)
+ DSPSPLF FILE(AFTRNSHIFT) SPLNBR(*LAST)
+ ENDDO
+ When (&Shift = '4') Do
+ CHGVAR &ShiftType 'A L L S H I F T S'
+ OVRPRTF FILE(PAYRPT2) SPLFNAME(ALLSHIFTS)
+ OVRDBF ALLSHIFT ALLSHIFT
+ CALLPRC PAYROLLP3 PARM(&ShiftType)
+ DSPSPLF FILE(ALLSHIFTS) SPLNBR(*LAST)
+ ENDDO
+  When ( &Shift *NE '5') DO
+  SndUsrMsg MSG(&Shift *CAT ' is an Invalid selection. Press the Enter Key')
+  ENDDO
+  ENDSELECT
+  SNDUSRMSG MSG('1 - Day Shift, 2 - Night Shift, 3 - Afternoon Shift, +
+        4 - All Shifts 5 - EXIT') MSGRPY(&SHIFT)
+        ENDDO
+        SNDPGMMSG MSG('Okay to clear out an output queue in +
+        school - Never at work in production')
+
+        WRKOUTQ &OutQLib/&OutQ
+ ENDPGM 

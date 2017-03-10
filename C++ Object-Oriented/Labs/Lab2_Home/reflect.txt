@@ -1,0 +1,30 @@
+////////////////////////////////////////////////////////////////
+// Workshop     2
+// Author	Alejandro Mesa Suarez
+// Number ID    0385151
+// Email        amesasuarez@myseneca.ca
+////////////////////////////////////////////////////////////////
+
+Reflection:
+1. On this lab we used private and public members:
+We declared some private variables and to access we used the public functions 
+inside the same class that were using those variables.
+Because that's the only way to access it without using a friend
+We also used function overload with the example of the display function
+we used default values set up to true and true as parameters, but
+the function was called using almost every possibility.
+
+2.
+I think is the same doing this
+do {
+} while (a < 10 && cout << "message");
+
+or doing this
+do {
+    if (a < 10)
+        cout << "message";
+} while (a < 10);
+
+I think that's bad practices because it will create confusion
+The logic behind is that cout is another parameter of the while loop 
+that returns true always and when the not valid return true it runs 

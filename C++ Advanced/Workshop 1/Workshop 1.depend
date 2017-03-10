@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1463341752 source:c:\users\ale\google drive\seneca\oop345 - c++\workshops\workshop 1\cstring.cpp
+	<iostream>
+	"CString.h"
+
+1463341752 c:\users\ale\google drive\seneca\oop345 - c++\workshops\workshop 1\cstring.h
+
+1463341752 source:c:\users\ale\google drive\seneca\oop345 - c++\workshops\workshop 1\process.cpp
+	<iostream>
+	"CString.h"
+	"process.h"
+
+1463341752 c:\users\ale\google drive\seneca\oop345 - c++\workshops\workshop 1\process.h
+
+1463341752 source:c:\users\ale\google drive\seneca\oop345 - c++\workshops\workshop 1\w1.cpp
+	<iostream>
+	"process.h"
+	"CString.h"
+

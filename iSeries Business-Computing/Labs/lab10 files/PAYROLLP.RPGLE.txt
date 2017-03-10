@@ -1,0 +1,66 @@
+
+     FALLSHIFT  IF   E           K DISK    RENAME (ALLSHIFT:ALLSHIFTR)
+     FSHIFTRATESIF   E             DISK    RENAME (SHIFTRATES:SHIFTRATER)
+     FCONFIRMPAYCF   E             WORKSTN
+     FPAYRPT    O    E             PRINTER OFLIND(*IN01)
+     DHOURSOVER        S              3  0
+
+
+      /FREE
+             READ SHIFTRATES;
+             Write TITLE;
+             Write COLHDG;
+             READ ALLSHIFT;
+             DOW NOT %EOF;
+               EXSR PAYSR;
+
+               IF *IN01;
+                 Write TITLE;
+                 Write COLHDG;
+                 *IN01 = *Off;
+               ENDIF;
+               Write EMPDETAIL;
+               Read ALLSHIFT;
+             ENDDO;
+             WRITE TOTALS;
+       EXFMT RECORD1;
+       *INLR = *ON;
+       RETURN;
+
+       BEGSR PAYSR;
+       SELECT;
+         WHEN WORKSHIFT = 'D';
+           HOURLYRATE = DAYRATE;
+         WHEN WORKSHIFT = 'A';
+           HOURLYRATE = AFTNRATE;
+         WHEN WORKSHIFT = 'N';
+           HOURLYRATE = NIGHTRATE;
+       ENDSL;
+
+
+       SELECT;
+         WHEN PAYGRADE = '1';
+         EVAL(H) HOURLYRATE = HOURLYRATE * 1.088;
+         WHEN PAYGRADE = '2';
+         EVAL(H) HOURLYRATE = HOURLYRATE * 1.055;
+         WHEN PAYGRADE = '3';
+         EVAL(H) HOURLYRATE = HOURLYRATE * 0.945;
+       ENDSL;
+
+       IF HRSWORKED > 40;
+         REGULARPAY = 40 * HOURLYRATE;
+         HOURSOVER = HRSWORKED - 40;
+         OVERPAY = HOURSOVER * HOURLYRATE * 1.5;
+         TOTREGPAY = TOTREGPAY + REGULARPAY;
+         TOTOVTPAY = TOTOVTPAY + OVERPAY;
+         TOTALPAY = OVERPAY + REGULARPAY;
+         ELSE;
+           REGULARPAY = HRSWORKED * HOURLYRATE;
+           TOTREGPAY = TOTREGPAY + REGULARPAY;
+           TOTALPAY = OVERPAY + REGULARPAY;
+           OVERPAY = 0;
+           ENDIF;
+           TOTEMPPAY = TOTREGPAY + TOTOVTPAY;
+           ENDSR;
+
+           /END-FREE 

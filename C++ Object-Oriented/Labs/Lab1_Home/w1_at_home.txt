@@ -1,0 +1,14 @@
+Steps to create a new project:
+01. Open Visual Studio
+02. Click Create New Porject or FILE/New/Project on the top left corner
+03. Uncheck the two boxes on the right down corner called Create directorty for solution and Add to source control
+04. Click Templates/Other Languages/Visual C++/Win32 and select Win32 Console Application
+05. Select the folder where we want to save the project by clicking Browse
+06. Enter a proper name for the project and click OK
+07. Press Next
+08. Uncheck from botton to top Precompiled header and SDL
+09. Check Empty Project and press Finish
+10. Now the the file structure is created
+11. Right CLick Source FIles on the Solution Explorer and click Add/New Item
+12. Now select a cpp extension file and that;s it
+13. Start coding and adding files on the proper folders.
