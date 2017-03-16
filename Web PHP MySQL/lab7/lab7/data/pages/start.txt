@@ -1,0 +1,14 @@
+~~DISCUSSION~~
+
+**Welcome to Test Dokuwiki 
+INT322 - Lab 7** 8-)
+
+----
+
+//Name //: Alejandro Mesa Suarez
+
+//School//: Seneca College
+
+//#          //: 038515151
+
+{{:php_banner.jpg?600|}}

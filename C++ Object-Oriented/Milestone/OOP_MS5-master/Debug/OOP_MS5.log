@@ -1,0 +1,31 @@
+﻿  WPlanner.cpp
+c:\users\ale\dropbox\seneca\c++\milestones\oop_ms5-master\wplanner.cpp(96): warning C4101: 'tempItem': unreferenced local variable
+  OnShelf.cpp
+c:\users\ale\dropbox\seneca\c++\milestones\oop_ms5-master\onshelf.cpp(61): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
+  Good.cpp
+c:\users\ale\dropbox\seneca\c++\milestones\oop_ms5-master\good.cpp(22): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
+c:\users\ale\dropbox\seneca\c++\milestones\oop_ms5-master\good.cpp(25): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
+c:\users\ale\dropbox\seneca\c++\milestones\oop_ms5-master\good.cpp(34): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
+c:\users\ale\dropbox\seneca\c++\milestones\oop_ms5-master\good.cpp(37): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
+c:\users\ale\dropbox\seneca\c++\milestones\oop_ms5-master\good.cpp(50): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
+c:\users\ale\dropbox\seneca\c++\milestones\oop_ms5-master\good.cpp(57): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
+  Error.cpp
+c:\users\ale\dropbox\seneca\c++\milestones\oop_ms5-master\error.cpp(25): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
+c:\users\ale\dropbox\seneca\c++\milestones\oop_ms5-master\error.cpp(45): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
+  Date.cpp
+  CustomMade.cpp
+  Generating Code...
+  Compiling...
+  WPlannerMain.cpp
+  Generating Code...
+  OOP_MS5.vcxproj -> C:\Users\Ale\Dropbox\seneca\c++\Milestones\OOP_MS5-master\Debug\OOP_MS5.exe
+  OOP_MS5.vcxproj -> C:\Users\Ale\Dropbox\seneca\c++\Milestones\OOP_MS5-master\Debug\OOP_MS5.pdb (Full PDB)

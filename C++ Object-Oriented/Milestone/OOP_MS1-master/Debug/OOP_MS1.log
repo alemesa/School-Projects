@@ -1,0 +1,10 @@
+﻿  Date.cpp
+c:\users\ale\dropbox\seneca\c++\milestones\oop_ms1-master\date.cpp(63): error C2065: 'MIN_YEAR': undeclared identifier
+c:\users\ale\dropbox\seneca\c++\milestones\oop_ms1-master\date.cpp(63): error C2065: 'MAX_YEAR': undeclared identifier
+  1-wpgeneralTester.cpp
+c:\users\ale\dropbox\seneca\c++\milestones\oop_ms1-master\1-wpgeneraltester.cpp(9): error C2065: 'MIN_YEAR': undeclared identifier
+c:\users\ale\dropbox\seneca\c++\milestones\oop_ms1-master\1-wpgeneraltester.cpp(13): error C2065: 'MAX_YEAR': undeclared identifier
+c:\users\ale\dropbox\seneca\c++\milestones\oop_ms1-master\1-wpgeneraltester.cpp(17): error C2065: 'TAX': undeclared identifier
+c:\users\ale\dropbox\seneca\c++\milestones\oop_ms1-master\1-wpgeneraltester.cpp(21): error C2065: 'MAX_UPC_LEN': undeclared identifier
+c:\users\ale\dropbox\seneca\c++\milestones\oop_ms1-master\1-wpgeneraltester.cpp(25): error C2065: 'MAX_NO_RECS': undeclared identifier
+  Generating Code...

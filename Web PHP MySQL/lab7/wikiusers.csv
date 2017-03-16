@@ -1,0 +1,7 @@
+User,"Real Name",Email,Groups
+admin,"Super Admin",superadmin@mail.com,"admin,user"
+blackwidow,"Black Widow",blackwidow@gmail.com,user
+captainamerica,"Captain America",captainamerica@gmail.com,user
+godzilla,Godzilla,godzilla@gmail.com,user
+ironman,"Iron Man",ironman@gmail.com,user
+spiderman,Spiderman,spiderman@mail.com,user

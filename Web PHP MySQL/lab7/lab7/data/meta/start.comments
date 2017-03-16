@@ -1,0 +1,12 @@
+a:5:{s:5:"title";N;s:6:"status";i:1;s:6:"number";i:1;s:8:"comments";a:1:{s:32:"1cd5bd526e98b1b8088e75cbb62bb978";a:8:{s:4:"user";a:5:{s:2:"id";s:5:"admin";s:4:"name";s:11:"Super Admin";s:4:"mail";s:19:"superadmin@mail.com";s:7:"address";s:0:"";s:3:"url";s:0:"";}s:4:"date";a:1:{s:7:"created";i:1489140249;}s:3:"raw";s:252:"This is a comment
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+";s:5:"xhtml";s:271:"
+<p>
+This is a comment
+</p>
+
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+</p>
+";s:6:"parent";N;s:7:"replies";a:0:{}s:4:"show";b:1;s:3:"cid";s:32:"1cd5bd526e98b1b8088e75cbb62bb978";}}s:11:"subscribers";N;}
