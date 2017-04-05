@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1491040511 source:c:\users\aleja\google drive\seneca\oop345 - c++\workshops\workshop 8\w8.cpp
+	<iostream>
+	<iomanip>
+	<fstream>
+	<string>
+	"DataTable.h"
+
+1491040563 c:\users\aleja\google drive\seneca\oop345 - c++\workshops\workshop 8\datatable.h
+	<vector>
+	<numeric>
+	<algorithm>
+	<functional>
+	<cmath>
+

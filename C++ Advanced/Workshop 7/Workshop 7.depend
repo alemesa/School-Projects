@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1491039044 source:c:\users\aleja\google drive\seneca\oop345 - c++\workshops\workshop 7\product.cpp
+
+1491036106 c:\users\aleja\google drive\seneca\oop345 - c++\workshops\workshop 7\product.h
+	"iProduct.h"
+
+1491036106 c:\users\aleja\google drive\seneca\oop345 - c++\workshops\workshop 7\iproduct.h
+	<iostream>
+	<fstream>
+
+1491036106 c:\users\aleja\google drive\seneca\oop345 - c++\workshops\workshop 7\taxableproduct.h
+	"Product.h"
+

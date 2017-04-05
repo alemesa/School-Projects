@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1490254616 source:c:\users\aleja\google drive\seneca\oop345 - c++\workshops\workshop 6\w6.cpp
+	<iostream>
+	"Grades.h"
+
+1490255845 c:\users\aleja\google drive\seneca\oop345 - c++\workshops\workshop 6\grades.h
+	<iostream>
+	<string>
+	<fstream>
+

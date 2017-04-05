@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1490252683 source:c:\users\aleja\google drive\seneca\oop345 - c++\workshops\workshop 5\message.cpp
+	<iostream>
+	<string>
+	"Message.h"
+
+1490328799 c:\users\aleja\google drive\seneca\oop345 - c++\workshops\workshop 5\message.h
+	<fstream>
+	<iostream>
+
+1490251839 source:c:\users\aleja\google drive\seneca\oop345 - c++\workshops\workshop 5\w5.cpp
+	<iostream>
+	<fstream>
+	"Message.h"
+	"Notifications.h"
+
+1490328351 c:\users\aleja\google drive\seneca\oop345 - c++\workshops\workshop 5\notifications.h
+	<iostream>
+	<string>
+	"Message.h"
+
+1490328445 source:c:\users\aleja\google drive\seneca\oop345 - c++\workshops\workshop 5\notificatons.cpp
+	"Notifications.h"
+

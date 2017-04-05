@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1490236810 source:c:\users\aleja\google drive\seneca\oop345 - c++\workshops\workshop 3\w3.cpp
+	<iostream>
+	<iomanip>
+	<utility>
+	<ctime>
+	"Text.h"
+
+1490256360 c:\users\aleja\google drive\seneca\oop345 - c++\workshops\workshop 3\text.h
+	<fstream>
+	<iostream>
+	<string>
+

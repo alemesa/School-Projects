@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1490243742 source:c:\users\aleja\google drive\seneca\oop345 - c++\workshops\workshop 4\w4.cpp
+	<iostream>
+	<iomanip>
+	<string>
+	"KVList.h"
+
+1490243797 c:\users\aleja\google drive\seneca\oop345 - c++\workshops\workshop 4\kvlist.h
+	<iostream>
+	<iomanip>
+	<string>
+

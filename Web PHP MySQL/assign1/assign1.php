@@ -13,7 +13,7 @@
 
 <div class="wrapper">
 <h3>Assignment 1 - PHP Comparison Tool</h3>
-<h5>Alejandro Mesa</h5>
+<h5>Alejandro Mesa   -   #038515151</h5>
 <div class="buttons">
 <a class="btn btn-success btn-sm" href="createtable.php" role="button">Add Data</a>
 <a class="btn btn-danger btn-sm" href="removetable.php" role="button">Remove Data</a>
@@ -60,12 +60,7 @@ for($i = 0; $i < sizeof($phone); $i++){
 		//Running query and printing error in case
 		mysqli_query($conn,$query) or die ('Error -> ' . mysqli_error($conn));
 }
-//Printing Current Date
-	$timeDatabase = "SELECT CURDATE()";
-	$date = mysqli_query($conn, $timeDatabase) or die ('Error getting the date ' . mysqli_error($conn));
-	$printDate = mysqli_fetch_assoc($date);
-	echo "Query Date: " . $printDate['CURDATE()'];
-	echo "<br><br><hr>";
+
 
 
 //validating all form information
@@ -98,6 +93,9 @@ if($_POST){
 }
 //If validation is passed
 if($_POST && $isValid){
+	$phoneError   = "";
+	$minimumError = "";
+	$maximumError = "";
 	$maxprice = $_POST['pricemax'];
 	$minprice = $_POST['pricemin'];
 	$typeofphone = $_POST['typeofphone'];
@@ -130,6 +128,14 @@ if($_POST && $isValid){
 <?php
 //Start printing with while
 $emptyFlag = 0;
+
+//Printing Current Date
+	$timeDatabase = "SELECT CURDATE()";
+	$date = mysqli_query($conn, $timeDatabase) or die ('Error getting the date ' . mysqli_error($conn));
+	$printDate = mysqli_fetch_assoc($date);
+	echo "Query Date: " . $printDate['CURDATE()'];
+	echo "<br><br><hr>";
+
 while($row = mysqli_fetch_assoc($request)){
 	$emptyFlag++;
 ?>
