@@ -1,0 +1,4 @@
+Q6.1 Can lambas defined locally (or inside) a function be viewed as increasing O-O encapsulation?
+
+CORRECT ANSWER
+True

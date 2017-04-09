@@ -1,0 +1,12 @@
+Q3.1: The workshop opens a file by a fstream is(filename, ios::in); fstream constructor call.  
+The program reads the file twice.
+The first pass counted the nummber of lines on the file. 
+The program allocated a string table of the required size.  
+The second pass read the lines into the string table.  
+The first pass reads the file until it encountered an EOF (end-of-file) state. 
+
+How do you reset the EOF state so the file can be read in again in the second pass?
+
+CORRECT ANSWER
+is.clear()
+is.seekg(0)

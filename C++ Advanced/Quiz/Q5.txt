@@ -1,0 +1,6 @@
+Q5.1 This workshop uses composition.  
+There are two classes: class Message and the MessageManager (class Notifications).
+Is workshop 2, the TTC workshop (class Station and the StationManager, class Stations) also a composition?
+
+CORRECT ANSWER
+True

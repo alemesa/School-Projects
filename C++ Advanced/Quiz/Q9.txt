@@ -1,0 +1,4 @@
+Quadratic complexity components usually consist of a number nested for loops.  How many?
+
+CORRECT ANSWER
+2

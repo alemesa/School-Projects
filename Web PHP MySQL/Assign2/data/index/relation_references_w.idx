@@ -1,3 +1,20 @@
 start
 wiki:syntax
 sidebar
+playground:playground
+wiki:pagename
+some:namespaces
+wiki:nonexisting
+wiki:dokuwiki
+assignment2:video
+assignment2:gallery
+assignment2:forum
+http://localhost:8888/dokuwiki-Assignment2/doku.php?id=start&do=register 
+simple button
+}
+}localhost:8888/dokuwiki-Assignment2/doku.php?id=start&do=register 
+localhost:8888_dokuwiki-assignment2_doku.php
+simple_button
+localhost:8888/dokuwiki-Assignment2/doku.php?id=start&do=register
+assignment2:map
+assignment2:list

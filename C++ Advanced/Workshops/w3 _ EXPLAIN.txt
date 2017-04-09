@@ -1,0 +1,5 @@
+Examine the output and explain why the execution time differs for the two assignment operators and the different constructors.
+
+Moving Operators will always be faster than copy operators, when copying we're allocating new memory, which takes machine processing time , when moving the memory
+stays as it is only the reference to this data is moved from the old position to the new one. In terms of a constructor is the same, but if the copy constructor is
+ not deep copying members there is not really many benefits of the move constructor in terms of speed

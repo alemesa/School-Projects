@@ -1,0 +1,6 @@
+AddType application/webm  webm
+AddType video/webm        webm
+AddType application/ogg   ogv  # Probably not necessary
+AddType video/ogg         ogv  # Probably not necessary
+AddType application/mp4   mp4  # Probably not necessary
+AddType video/mp4         mp4  # Probably not necessary

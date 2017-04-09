@@ -1,0 +1,6 @@
+===== Seneca Gallery =====
+{{ :assignment2:senecalogo.png?nolink&600 | Seneca Logo}}
+{{ :assignment2:newnham.jpeg?nolink&600 | Newnham Campus}}
+{{ :assignment2:markhamcampus.jpeg?nolink&600 | Markham Campus}}
+{{ :assignment2:seneca_york.jpeg?nolink&600 | Seneca@York Campus}}
+{{ :assignment2:kingcampus.jpeg?nolink&600 | King Campus}}

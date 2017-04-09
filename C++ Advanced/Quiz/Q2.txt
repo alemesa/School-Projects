@@ -1,0 +1,11 @@
+Upon successful completion of this workshop, you will have demonstrated the abilities to
+
+    work with objects of the string class
+    declare and use enumeration constants
+    use the correct constant type in initializations
+    retrieve data from and backup data to a text file
+    move data between unsigned and signed integers
+
+CORRECT ANSWER
+fstream os(filename, ios::out | ios::trunc)
+

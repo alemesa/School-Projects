@@ -1,0 +1,207 @@
+Script started on Thu 23 Mar 2017 03:22:39 AM EDT
+amesasuarez@matrix:~/OOP345/w3> whoami
+amesasuarez
+amesasuarez@matrix:~/OOP345/w3> cat w3.cpp Text.h Text.cpp
+/*
+OOP345
+Workshop 3
+Title    : Copy and Move Semantics
+Date     : 03/06/17
+Author   : Alejandro Mesa
+Student# : 038515151
+Email    : amesasuarez@myseneca.ca
+*/
+
+ // Workshop 3 - Copy and Move Semantics
+ // w3.cpp
+
+ #include <iostream>
+ #include <iomanip>
+ #include <utility>
+ #include <ctime>
+ #include "Text.h"
+ #define TIME(start, end) double((end) - (start)) / CLOCKS_PER_SEC
+
+ int main (int argc, char* argv[]) {
+     if (argc == 1) {
+         std::cerr << argv[0] << ": missing file operand\n";
+         return 1;
+     }
+     else if (argc != 2) {
+         std::cerr << argv[0] << ": too many arguments\n";
+         return 2;
+     }
+     std::clock_t cs, ce;
+     {
+         std::cout << std::fixed << std::setprecision(3);
+         cs = std::clock();
+         w3::Text a;
+         ce = std::clock();
+         std::cout << "Constructor      " << TIME(cs, ce) << " seconds";
+         std::cout << " - a.size = " << a.size() << std::endl;
+
+         cs = std::clock();
+         w3::Text b(argv[1]);
+         ce = std::clock();
+         std::cout << "Constructor      " << TIME(cs, ce) << " seconds";
+         std::cout << " - b.size = " << b.size() << std::endl;
+
+         cs = std::clock();
+         a = b;
+         ce = std::clock();
+         std::cout << "Copy Assignment  " << TIME(cs, ce) << " seconds";
+         std::cout << " - a.size = " << a.size() << std::endl;
+
+         cs = std::clock();
+         a = std::move(b);
+         ce = std::clock();
+         std::cout << "Move Assignment  " << TIME(cs, ce) << " seconds";
+         std::cout << " - a.size = " << a.size() << std::endl;
+
+         cs = std::clock();
+         w3::Text c = a;
+         ce = std::clock();
+         std::cout << "Copy Constructor " << TIME(cs, ce) << " seconds";
+         std::cout << " - c.size = " << c.size() << std::endl;
+
+         cs = std::clock();
+         w3::Text d = std::move(a);
+         ce = std::clock();
+         std::cout << "Move Constructor " << TIME(cs, ce) << " seconds";
+         std::cout << " - d.size = " << d.size() << std::endl;
+
+         cs = std::clock();
+     }
+     ce = std::clock();
+     std::cout << "Destructor       " << TIME(cs, ce) << " seconds\n";
+ }
+/*
+OOP345
+Workshop 3
+Title    : Copy and Move Semantics
+Date     : 03/06/17
+Author   : Alejandro Mesa
+Student# : 038515151
+Email    : amesasuarez@myseneca.ca
+*/
+
+#pragma once
+#include <fstream>
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+namespace w3 {
+    class Text {
+        size_t count;
+        string* linerow;
+    public:
+        size_t size() const { return count; }
+        Text(char * filename);
+        Text() : count(0), linerow(nullptr) {  }
+        Text(const Text& rhs);
+        Text& operator = (const Text& rhs);
+        Text(Text&& rhs);
+        Text& operator = (Text&& rhs);
+        ~Text() { delete[] linerow; }
+    };
+}
+/*
+OOP345
+Workshop 3
+Title    : Copy and Move Semantics
+Date     : 03/06/17
+Author   : Alejandro Mesa
+Student# : 038515151
+Email    : amesasuarez@myseneca.ca
+*/
+
+#include <fstream>
+#include <iostream>
+#include <string>
+
+#include "Text.h"
+
+using namespace std;
+
+namespace w3 {
+
+    Text::Text(char * filename) : count(0), linerow(nullptr) {
+        fstream is(filename, ios::in);
+        if (is.is_open()) {
+            string line;
+            while (getline(is, line)) {
+                count++;
+            }
+            cout << "File " << filename << " has " << count << " lines." << endl;
+
+            linerow = new string[count];
+            //Reset File
+            is.clear();
+            //Go to the beginning
+            is.seekg(0);
+
+            for (size_t i = 0; i < count; i++) {
+                getline(is, linerow[i]);
+            }
+            is.close();
+        }
+        else {
+            cerr << "Cannot open filename:" << filename << endl;
+            exit(1);
+        }
+    }
+
+
+    Text& Text::operator = (const Text& rhs) {
+
+        if (this != &rhs) {
+
+            delete[] linerow;
+            count = rhs.count;
+            linerow = new string[count];
+
+            for (size_t i = 0; i < count; i++) {
+                linerow[i] = rhs.linerow[i];
+            }
+        }
+        return *this;
+    }
+
+    Text::Text(Text&& rhs) : count(0), linerow(nullptr) {
+        if (this != &rhs)
+            *this = move(rhs);
+    }
+    Text& Text::operator = (Text&& rhs) {
+
+        if (this != &rhs) {
+            delete[] linerow;
+            count = rhs.count;
+            linerow = rhs.linerow;
+            rhs.count = 0;
+            rhs.linerow = nullptr;
+        }
+        return *this;
+
+    }
+
+    Text::Text(const Text& rhs) : count(0), linerow(nullptr){
+        *this = rhs;
+        }
+}
+amesasuarez@matrix:~/OOP345/w3>
+amesasuarez@matrix:~/OOP345/w3> g++ -o w3 -std=c++0x w3.cpp Text.cpp
+amesasuarez@matrix:~/OOP345/w3> w3 gutenberg_shakespeare
+Constructor      0.000 seconds - a.size = 0
+File gutenberg_shakespeare has 124453 lines.
+Constructor      0.110 seconds - b.size = 124453
+Copy Assignment  0.010 seconds - a.size = 124453
+Move Assignment  0.000 seconds - a.size = 124453
+Copy Constructor 0.010 seconds - c.size = 124453
+Move Constructor 0.000 seconds - d.size = 124453
+Destructor       0.030 seconds
+amesasuarez@matrix:~/OOP345/w3> exit
+exit
+
+Script done on Thu 23 Mar 2017 03:23:28 AM EDT

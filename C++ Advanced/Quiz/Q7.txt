@@ -1,0 +1,18 @@
+
+Q7.1 What does this code print?
+try {
+  auto X = [] { throw nullptr; }
+  auto Y = [X] { X(); };
+  auto Z = [Y] { Y(); };
+
+  Z();
+} catch (const char* e)   {
+  cerr << "something threw a char* exception\n"; 
+} catch (const std::string* e) {
+  cerr << "something threw a string exception\n"; 
+} catch (...)            {
+  cerr << "something threw a ... exception\n"; 
+}
+
+CORRECT ANSWER
+something threw a ... exception\n

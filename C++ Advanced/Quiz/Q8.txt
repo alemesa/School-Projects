@@ -1,0 +1,30 @@
+A.	
+ T sum = initialvalue;
+ for(auto it = begin, it != end, it++)
+   sum += *it;
+ return sum;
+
+B.	
+ T sum = initialvalue;
+ for(auto it = begin, it != end, it++)
+   sum += *it * *begin2++;
+ return sum;
+
+C.	
+ size_t hits = 0;
+ for(auto it = begin, it != end, it++)
+   if(*it == Value)
+     hits++;
+ return hits;
+
+D.	
+ for(auto it = begin, it != end, it++)
+   if(*it == Value)
+     return it;
+ return end;
+
+
+A -> T accumulate(iterator begin, iterator end, T initialValue)
+B -> T inner_product(iterator begin, iterator end, iterator begin2, T initialValue)
+C -> size_t count count(iterator begin, iterator end, T Value)
+D -> iterator find(iterator begin, iterator end, T Value)

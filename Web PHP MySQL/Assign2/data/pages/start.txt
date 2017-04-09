@@ -1,0 +1,21 @@
+
+
+**Assignment 2 - INT322**
+
+Created By:
+
+<color green>Saif Husain Khan (125444158)</color>\\
+<color darkred>Saeed Mohammed Mohiti (116236159)</color>\\
+<color orange>Manali Amin (119679157)</color>\\
+<color lightblue>Digvijaysingh Makwana (101918167)</color>\\
+<color yellow>Alejandro Mesa Suarez (038515151)</color>\\
+<color red>Adriel Arce De La Cruz (106336167)</color>\\
+
+
+
+[[{ :registerlogo.png?nolink&200|}localhost:8888/dokuwiki-Assignment2/doku.php?id=start&do=register|]]
+
+
+<todo @Saif>Come to class</todo>
+
+

@@ -1,0 +1,14 @@
+Is it possible to accomplish the same thing as Workshop 4 if you code as a table of KV-pairs?
+  template<typename K, typename V,int N> 
+  class KVList2 {
+    struct {
+      K k;
+      V v;
+    } KVPair[N];
+    int count;
+  pubic:
+  ...
+  };
+
+CORRECT ANSWER
+True

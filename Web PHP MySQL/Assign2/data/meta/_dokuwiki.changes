@@ -1,0 +1,101 @@
+1491334247	::1	C	start		created		10
+1491334361	::1	E	start				12
+1491344851	::1	E	start	root			1462
+1491345656	::1	E	start	root			16
+1491407672	::1	E	start	root			-1435
+1491410182	::1	C	sidebar	root	created		19
+1491418903	::1	E	start	root			17
+1491418975	::1	E	start	root			-5
+1491419002	::1	C	assignment2	root	created		12
+1491419452	::1	E	start	root			-20
+1491419472	::1	E	start	root			-9
+1491419484	::1	E	start	root			-11
+1491427847	::1	E	start	root			-12
+1491429212	::1	C	assignment2:video	root	created		19
+1491429266	::1	E	sidebar	root			25
+1491429310	::1	E	sidebar	root			2
+1491429328	::1	E	sidebar	root			5
+1491429336	::1	E	sidebar	root			-5
+1491429385	::1	E	sidebar	root			6
+1491429418	::1	E	assignment2	root			16
+1491431564	::1	E	assignment2:video	root			49
+1491431678	::1	E	assignment2:video	root			8
+1491440728	::1	C	assignment2:gallery	root	created		18
+1491440820	::1	E	assignment2:gallery	root			57
+1491440845	::1	E	assignment2:gallery	root			-18
+1491440904	::1	E	sidebar	root			35
+1491441099	::1	E	assignment2:gallery	root			59
+1491442060	::1	E	assignment2:gallery	root			65
+1491442191	::1	E	assignment2:gallery	root			67
+1491494175	::1	E	assignment2:video	root			11
+1491494219	::1	E	assignment2:video	root			18
+1491494244	::1	E	assignment2:video	root			-6
+1491494274	::1	E	assignment2:gallery	root			22
+1491494428	::1	E	assignment2:video	root			-4
+1491494435	::1	E	assignment2:video	root			-1
+1491494536	::1	E	assignment2:video	root			1
+1491494580	::1	E	assignment2:video	root			-2
+1491494590	::1	E	assignment2:video	root			2
+1491495001	::1	E	assignment2:video	root			-2
+1491495155	::1	E	assignment2:video	root			-14
+1491495277	::1	C	assignment2:forum	root	created		55
+1491497844	::1	E	assignment2:video	root			28
+1491498240	::1	E	assignment2:video	root			-6
+1491498389	::1	E	assignment2:video	root			-27
+1491498625	::1	E	assignment2:forum	root			0
+1491498650	::1	C	assignment2:forum:int322_topics	root	created		14
+1491498684	::1	E	assignment2:forum:int322_topics	root			19
+1491498773	::1	E	sidebar	root			30
+1491498783	::1	E	sidebar	root			1
+1491504813	::1	E	assignment2:video	root			-18
+1491504854	::1	E	assignment2:video	root			-10
+1491504906	::1	E	assignment2:video	root			28
+1491505182	::1	E	assignment2:gallery	root			-21
+1491505199	::1	E	assignment2:forum	root			1
+1491505230	::1	E	assignment2:forum	root			-1
+1491505496	::1	E	assignment2:forum	root			-12
+1491505548	::1	E	assignment2:forum	root			67
+1491505656	::1	E	assignment2:forum	root			16
+1491505930	::1	E	start				89
+1491506369	::1	E	start	root			2
+1491506842	::1	E	start	root			121
+1491506945	::1	E	start	root			-22
+1491507061	::1	E	start	root			-83
+1491507745	::1	E	start	admin1			47
+1491508554	::1	E	start	admin1			35
+1491508630	::1	e	start	admin1	ToDo checked: Come to class		19
+1491508631	::1	e	start	admin1	ToDo unchecked: Come to class		-19
+1491508875	::1	C	assignment2:map	admin1	created		190
+1491508917	::1	E	sidebar	admin1			27
+1491508944	::1	E	assignment2:video	admin1			-28
+1491519159	::1	E	assignment2:gallery	admin1			59
+1491519188	::1	E	assignment2:forum	admin1			-7
+1491519767	::1	E	start	admin1			301
+1491520002	::1	C	assignment2:list	admin1	created		35
+1491520040	::1	E	assignment2:gallery	admin1			30
+1491520065	::1	E	assignment2:video	admin1			8
+1491520086	::1	E	assignment2:gallery	admin1			-2
+1491520107	::1	E	assignment2:gallery	admin1			22
+1491520270	::1	E	assignment2:gallery	admin1			-23
+1491520291	::1	E	assignment2:forum	admin1			8
+1491520451	::1	E	sidebar	admin1			29
+1491520514	::1	E	assignment2:map	admin1			25
+1491520528	::1	E	assignment2:list	admin1			-2
+1491648310	127.0.0.1	E	start		external edit		0
+1491677806	::1	E	start		ToDo checked: Come to class		13
+1491677806	::1	E	start		ToDo unchecked: Come to class		-13
+1491708022	::1	e	start	root	ToDo checked: Come to class		17
+1491708023	::1	e	start	root	ToDo unchecked: Come to class		-17
+1491708024	::1	e	start	root	ToDo checked: Come to class		17
+1491708024	::1	e	start	root	ToDo unchecked: Come to class		-17
+1491708026	::1	e	start	root	ToDo checked: Come to class		17
+1491708026	::1	e	start	root	ToDo unchecked: Come to class		-17
+1491711143	::1	e	start	root	ToDo checked: Come to class		17
+1491711144	::1	e	start	root	ToDo unchecked: Come to class		-17
+1491711662	::1	E	start	root			17
+1491711699	::1	E	start	root			13
+1491648656	127.0.0.1	E	assignment2:map		external edit		0
+1491711781	::1	E	assignment2:map	root			16
+1491711812	::1	E	assignment2:map	root			-6
+1491711886	::1	E	assignment2:map	root			1
+1491711951	::1	E	start	root			-26

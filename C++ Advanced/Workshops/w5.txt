@@ -1,0 +1,215 @@
+Script started on Fri 24 Mar 2017 11:18:16 PM EDT
+amesasuarez@matrix:~/OOP345/w5> whoami
+amesasuarez
+amesasuarez@matrix:~/OOP345/w5> cat w5.cpp Notifications.* Message.*
+// Workshop 5 - Containers
+// w5.cpp
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <iostream>
+#include <fstream>
+#include "Message.h"
+#include "Notifications.h"
+
+const char REC_DELIMITER = '\n';
+
+w5::Notifications collect(std::ifstream& in, char recDelim) {
+    w5::Notifications notifications;
+
+    do {
+        w5::Message message(in, recDelim);
+        if (!message.empty())
+            notifications += std::move(message);
+    } while (in);
+
+    return notifications;
+}
+
+int main(int argc, char* argv[]) {
+    if (argc == 1) {
+        std::cerr << argv[0] << ": missing file operand\n";
+        return 1;
+    }
+    else if (argc != 2) {
+        std::cerr << argv[0] << ": too many arguments\n";
+        return 2;
+    }
+    std::ifstream file(argv[1]);
+    if (!file) {
+        std::cerr << argv[0] << "\n: Failed to open " << argv[1] << "\n";
+        return 3;
+    }
+
+    std::cout << "\nNotifications\n=============\n\n";
+    w5::Notifications notifications = collect(file, REC_DELIMITER);
+
+    notifications.display(std::cout);
+
+    std::cout << "Press any key to continue ... ";
+    std::cin.get();
+}
+/*
+OOP345
+Workshop 5
+Title    : Containers
+Date     : 03/15/17
+Author   : Alejandro Mesa
+Student# : 038515151
+Email    : amesasuarez@myseneca.ca
+*/
+
+#pragma once
+#include <iostream>
+#include <string>
+#include "Message.h"
+
+namespace w5 {
+	static const int CAPACITY = 10;
+
+	class Notifications {
+	    private:
+			Message* ptrMessages;
+			size_t count;
+
+		public:
+			Notifications() : count(0), ptrMessages(new Message[CAPACITY]) {}
+			Notifications(const Notifications& rhs);
+			Notifications& operator=(const Notifications& rhs);
+			Notifications(Notifications&& rhs);
+			Notifications&& operator=(Notifications&& rhs);
+			~Notifications();
+			void operator+=(const Message& message);
+			void display(std::ostream& os) const;
+	};
+
+}
+/*
+OOP345
+Workshop 5
+Title    : Containers
+Date     : 03/15/17
+Author   : Alejandro Mesa
+Student# : 038515151
+Email    : amesasuarez@myseneca.ca
+*/
+
+#include <iostream>
+#include <string>
+#include "Message.h"
+using namespace std;
+
+namespace w5 {
+
+	Message::Message(std::ifstream& input, char delimiter)
+	{
+		name.clear();
+		reply.clear();
+		message.clear();
+
+		std::string line;
+		getline(input, line);
+
+		int index = 0;
+		while (index < line.size() && line[index] != ' '){
+			name += line[index];
+			index++;
+
+		}
+		index++;
+		if (index < line.size() && line[index] == '@'){
+			index++;
+			while (index < line.size() && line[index] != ' '){
+				reply += line[index];
+				index++;
+			}
+
+		}
+
+		while (index < line.size()){
+			message += line[index];
+			index++;
+		}
+	}
+
+	bool Message::empty() const{
+		return message.empty();
+	}
+
+	void Message::display(std::ostream& os) const
+	{
+		os << "Message\n";
+		os << " User  : " << name << "\n";
+
+		if (reply.empty()==false)
+		{
+			os << " Reply : " << reply << "\n";
+			os << " Tweet :" << message << "\n";
+		}
+		else {
+			os << " Tweet : " << message << "\n";
+			os << "\n";
+		}
+	}
+}
+/*
+OOP345
+Workshop 5
+Title    : Containers
+Date     : 03/15/17
+Author   : Alejandro Mesa
+Student# : 038515151
+Email    : amesasuarez@myseneca.ca
+*/
+
+#pragma once
+#include <fstream>
+#include <iostream>
+
+using namespace std;
+
+namespace w5 {
+	class Message {
+		string name;
+		string reply;
+		string message;
+
+		public:
+			Message() {}
+			Message(std::ifstream& input, char delimiter);
+			bool empty() const;
+			void display(std::ostream&) const;
+	};
+}
+amesasuarez@matrix:~/OOP345/w5> g++ -o w5 -std=c++0x w5.cpp Notifications.cpp Message.cpp
+g++: error: Notifications.cpp: No such file or directory
+amesasuarez@matrix:~/OOP345/w5> ls
+[0m[00mMessage.cpp[0m  [00mMessage.h[0m  [00mNotifications.h[0m  [00mNotificatons.cpp[0m  [00mw5.cpp[0m  [00mw5.txt[0m  [00mw5_test.dat[0m
+amesasuarez@matrix:~/OOP345/w5> mv Notificatons.cpp Notifications.cpp
+amesasuarez@matrix:~/OOP345/w5> mv Notificatons.cpp Notifications.cpp[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls[Kg++ -o w5 -std=c++0x w5.cpp Notifications.cpp Message.cpp
+amesasuarez@matrix:~/OOP345/w5> w5 w5_test.dat
+
+Notifications
+=============
+
+Message
+ User  : jim
+ Tweet : Workshop 5 is cool
+
+Message
+ User  : harry
+ Reply : jim
+ Tweet : working on workshop 5 now
+Message
+ User  : dave
+ Tweet : what the ^#$%!
+
+Message
+ User  : john
+ Reply : harry
+ Tweet : I'm done
+Press any key to continue ... 
+amesasuarez@matrix:~/OOP345/w5> exit
+exit
+
+Script done on Fri 24 Mar 2017 11:19:19 PM EDT
