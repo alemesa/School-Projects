@@ -1,0 +1,736 @@
+Script started on Sun 02 Apr 2017 02:27:44 PM EDT
+amesasuarez@matrix:~/OOP345/Milestones/MS2> whoami
+amesasuarez
+amesasuarez@matrix:~/OOP345/Milestones/MS2> cat *.cpp
+
+/* 
+OOP345
+Milestone # 2
+Date     : 03/26/17
+Author   : Alejandro Mesa
+Student# : 038515151
+Email    : amesasuarez@myseneca.ca 
+*/
+
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<vector>
+#include "util.h"
+using namespace std;
+int main(int argc, char* argv[]) {
+	try {
+		if (argc != 3)
+			throw string(argv[0]) + "need two arg the csv file name, and the csv separator";
+		string filename = argv[1];
+		char separator = argv[2][0];
+		vector<vector<string>> csvdata;
+		csvread(filename, separator, csvdata);
+		//printcsv(csvdata);
+	}
+	catch (const string& e) {
+		cerr << e << "\n";
+	}
+}
+
+/* 
+OOP345
+Milestone # 2
+Date     : 03/26/17
+Author   : Alejandro Mesa
+Student# : 038515151
+Email    : amesasuarez@myseneca.ca 
+*/
+
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<vector>
+#include "util.h"
+using namespace std;
+void trimspace(string& s) {
+	string in = s;
+	//return;
+	// delete the fisrt char if is a space
+	while (!s.empty() && s[0] == ' ') {
+		s.erase(0, 1);
+	}
+	//cout << "trimspace : in.out: -" << in << "-" << s << "-\n";
+	//dlete the last char if is space
+	while (!s.empty() && s[s.size() - 1] == ' ') {
+		s.erase(s.size() - 1, 1);
+	}
+	cout << "trimspace : in.out: -" << in << "-" << s << "-\n";
+}
+
+void printcsv(vector<vector<string>> &csvdata) {
+	for (auto row : csvdata) {
+		for (auto column : row) {
+			cout << "<" << column << ">";
+		}
+		cout << "\n";
+	}
+	for (size_t row = 0; row < csvdata.size(); row++) {
+		for (size_t column = 0; column < csvdata[row].size(); column++) {
+			cout << "[" << csvdata[row][column] << "]";
+		}
+		cout << "\n";
+	}
+	for (auto row = csvdata.begin(); row != csvdata.end(); row++) {
+		for (auto column = row->begin(); column != row->end(); column++) {
+			cout << "{" << *column << "}";
+		}
+		cout << "\n";
+	}
+}
+
+void csvread(string& filename, char separator, vector<vector<string>> &csvdata) {
+	vector<vector<string>> csvread;
+	cout << "filename='" << filename << "\n'";
+	cout << "separator='" << separator << "\n'";
+	fstream is(filename, ios::in);
+	if (!is.is_open()) {
+		throw string("cant open file'") + filename + "'";
+	}
+	string line;
+	while (getline(is, line)) {
+		auto cr = line.find('\r');
+		if (cr != string::npos)
+			line.erase(cr);
+		//cout << line << "\n";
+		vector<string> fields;
+		string field;
+		int fieldcount = 0;
+		size_t index = 0;
+		while (index < line.size()) {
+			while (index < line.size() && line[index] != separator) {
+				field += line[index];
+				index++;
+			}
+			index++; // skip the sparator 
+					 //cout << "field='" << field << "\n'";
+			trimspace(field);
+			fieldcount++;
+			fields.push_back(move(field)); // turns filed in to zombi
+		}
+		csvdata.push_back(move(fields));// turn vector fields into a zombie
+	}
+	is.close();
+}
+
+int main(int argc, char* argv[]) {
+	try {
+		if (argc != 3)
+			throw string(argv[0]) + "need two arg the csv file name, and the csv separator";
+		string filename = argv[1];
+		char separator = argv[2][0];
+		vector<vector<string>> csvdata;
+		csvread(filename, separator, csvdata);
+		printcsv(csvdata);
+	}
+	catch (const string& e) {
+		cerr << e << "\n";
+	}
+}
+
+
+/* 
+OOP345
+Milestone # 2
+Date     : 03/26/17
+Author   : Alejandro Mesa
+Student# : 038515151
+Email    : amesasuarez@myseneca.ca 
+*/
+
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<vector>
+#include "util.h"
+using namespace std;
+class Task;
+class TaskManager;
+class Task {
+	string taskName, taskSlots, taskPass, taskFail;
+public:
+	Task(vector<string>&row)
+		:taskSlots("1")
+	{
+		for (auto e : row)
+			cout << "~" << e << "~";
+		cout << "\n";
+		switch (row.size()) {
+		case 4:
+			if (validTask(row[3]))
+				taskFail = row[3];
+			else
+				throw string("expected a fail task name '") + row[3] + "'";
+			//fall through to 3 field case
+		case 3:
+			if (validTask(row[2]))
+				taskPass = row[2];
+			else
+				throw string("expected a pass task name '") + row[2] + "'";
+			//fall through to 2 field case
+		case 2:
+			if (validSlots(row[1]))
+				taskSlots = row[1];
+			else
+				throw string("expected a slot '") + row[1] + "'";
+		case 1:
+			if (validTask(row[0]))
+				taskName = row[0];
+			else
+				throw string("expected a task name '") + row[0] + "'";
+			break;
+		default: throw string("found") + to_string(row.size()) + "fields, expected 1,2,3 or 4";
+		}
+	}
+	void print() {
+		cout << "task: name/slots/pass/fail ="
+			<< taskName << "/"
+			<< taskSlots << "/"
+			<< taskPass << "/"
+			<< taskFail << "/"
+			<< "\n";
+	}
+	void graph(std::fstream &os) {
+		if (!taskFail.empty())
+			os << '"' << taskName << '"' << "->" << '"' << taskFail << '"' << " [color=red];" << std::endl;
+		//os << "'"<< taskName + "' ->" + taskFail + "[color=red]\n";
+		if (!taskPass.empty())
+			os << '"' << taskName << '"' << "->" << '"' << taskPass << '"' << " [color=green];" << std::endl;
+		//os << taskName + " ->" + taskPass + "[color=green]\n";
+		if (taskPass.empty() && taskFail.empty())
+			os << taskName << std::endl;
+	}
+};
+
+class TaskManager {
+	vector<Task>tasks;
+public:
+	TaskManager() {}
+	TaskManager(vector<vector<string>> &csvdata) {
+		for (auto row : csvdata) {
+			try {
+				tasks.push_back(move(Task(row)));
+			}
+			catch (const string& e) {
+				cerr << "TaskManagr: problem" << e << "\n";
+			}
+		}
+	}
+	void print() {
+		for (auto t : tasks)
+			t.print();
+	}
+	void graph(string &filename) {
+		string dotFile = filename + ".gv";
+		std::fstream os(dotFile, std::ios::out | std::ios::trunc);
+		if (!os.is_open()) {
+			cerr << "TaskManager::graph -> Cannot create " << dotFile << "\n";
+			cerr << "filename='" << filename << "'\n";
+			return;
+		}
+		os << "digraph taskGraph {\n";
+		for (auto t : tasks)
+			t.graph(os);
+		os << "}\n";
+		os.close();
+#ifdef __unix
+		string dot = "dot";
+#else
+		string dot = "C:/\"Program Files (x86)\"/Graphviz2.38/bin/dot.exe";
+#endif
+		string cmd = dot + " -Tpng " + filename + ".gv >" + filename + ".gv.png";
+		cout << cmd << "\n";
+		system(cmd.c_str());
+	}
+};
+
+int main(int argc, char* argv[]) {
+	try {
+		if (argc != 3)
+			throw string(argv[0]) + " need two arg the csv file name, and the csv separator";
+		string taskfilename = argv[1];
+		char separator = argv[2][0];
+		vector<vector<string>> csvtaskdata;
+		csvread(taskfilename, separator, csvtaskdata);
+		//printcsv(csvdata);  // everything is fine with csvread
+		TaskManager tm(csvtaskdata);
+		tm.print();
+		tm.graph(taskfilename);
+	}
+	catch (const string& e) {
+		cerr << e << "\n";
+	}
+}
+
+
+/* 
+OOP345
+Milestone # 2
+Date     : 03/26/17
+Author   : Alejandro Mesa
+Student# : 038515151
+Email    : amesasuarez@myseneca.ca 
+*/
+
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<vector>
+#include "util.h"
+using namespace std;
+
+void trimspace(string& s) {
+	string in = s;
+	//return;
+	// delete the fisrt char if is a space
+	while (!s.empty() && s[0] == ' ') {
+		s.erase(0, 1);
+	}
+	cout << "trimspace : in.out: -" << in << "-" << s << "-\n";
+	//dlete the last char if is space
+	while (!s.empty() && s[s.size() - 1] == ' ') {
+		s.erase(s.size() - 1, 1);
+	}
+	cout << "trimspace : in.out: -" << in << "-" << s << "-\n";
+}
+
+void printcsv(vector<vector<string>> &csvdata) {
+	for (auto row : csvdata) {
+		for (auto column : row) {
+			cout << "<" << column << ">";
+		}
+		cout << "\n";
+	}
+	for (size_t row = 0; row < csvdata.size(); row++) {
+		for (size_t column = 0; column < csvdata[row].size(); column++) {
+			cout << "[" << csvdata[row][column] << "]";
+		}
+		cout << "\n";
+	}
+	for (auto row = csvdata.begin(); row != csvdata.end(); row++) {
+		for (auto column = row->begin(); column != row->end(); column++) {
+			cout << "{" << *column << "}";
+		}
+		cout << "\n";
+	}
+}
+
+void csvread(string& filename, char separator, vector<vector<string>> &csvdata) {
+	vector<vector<string>> csvread;
+	cout << "filename='" << filename << "\n'";
+	cout << "separator='" << separator << "\n'";
+	fstream is(filename, ios::in);
+	if (!is.is_open()) {
+		throw string("cant open file'") + filename + "'";
+	}
+	string line;
+	while (getline(is, line)) {
+		auto cr = line.find('\r');
+		if (cr != string::npos)
+			line.erase(cr);
+		//cout << line << "\n";
+		vector<string> fields;
+		string field;
+		int fieldcount = 0;
+		size_t index = 0;
+		while (index < line.size()) {
+			while (index < line.size() && line[index] != separator) {
+				field += line[index];
+				index++;
+			}
+			index++; // skip the sparator 
+					 //cout << "field='" << field << "\n'";
+			trimspace(field);
+			fieldcount++;
+			fields.push_back(move(field)); // turns filed in to zombi
+		}
+		csvdata.push_back(move(fields));// turn vector fields into a zombie
+	}
+	is.close();
+}
+
+bool validTask(string s) {
+	for (auto c : s) {
+		if (!(isalnum(c) || c == ' '))
+			return false;
+	}
+	return true;
+}
+
+bool validSlots(string s) {
+	for (auto c : s) {
+		if (!isdigit(c))
+			return false;
+	}
+	return true;
+}
+
+amesasuarez@matrix:~/OOP345/Milestones/MS2> g++ -o task -std=c++ 
+0x task.cpp util.cpp
+amesasuarez@matrix:~/OOP345/Milestones/MS2>  g++ -o dump -std=c++ 
+0x csvdump.cpp util.cpp
+amesasuarez@matrix:~/OOP345/Milestones/MS2> task FishTanktasks.dat ","
+filename='FishTankTasks.dat
+'separator=',
+'trimspace : in.out: -SetupTank-SetupTank-
+trimspace : in.out: -SetupTank-SetupTank-
+trimspace : in.out: - 2-2-
+trimspace : in.out: - 2-2-
+trimspace : in.out: - AddGravel-AddGravel-
+trimspace : in.out: - AddGravel-AddGravel-
+trimspace : in.out: -RemoveTank-RemoveTank-
+trimspace : in.out: -RemoveTank-RemoveTank-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - SetupTank-SetupTank-
+trimspace : in.out: - SetupTank-SetupTank-
+trimspace : in.out: -AddGravel-AddGravel-
+trimspace : in.out: -AddGravel-AddGravel-
+trimspace : in.out: - 5-5-
+trimspace : in.out: - 5-5-
+trimspace : in.out: - AssembleFilter-AssembleFilter-
+trimspace : in.out: - AssembleFilter-AssembleFilter-
+trimspace : in.out: - RemoveGravel-RemoveGravel-
+trimspace : in.out: - RemoveGravel-RemoveGravel-
+trimspace : in.out: -RemoveGravel-RemoveGravel-
+trimspace : in.out: -RemoveGravel-RemoveGravel-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - AddGravel-AddGravel-
+trimspace : in.out: - AddGravel-AddGravel-
+trimspace : in.out: -AssembleFilter-AssembleFilter-
+trimspace : in.out: -AssembleFilter-AssembleFilter-
+trimspace : in.out: - 5-5-
+trimspace : in.out: - 5-5-
+trimspace : in.out: - InstallLighting-InstallLighting-
+trimspace : in.out: - InstallLighting-InstallLighting-
+trimspace : in.out: - DisassembleFilter-DisassembleFilter-
+trimspace : in.out: - DisassembleFilter-DisassembleFilter-
+trimspace : in.out: -DisassembleFilter-DisassembleFilter-
+trimspace : in.out: -DisassembleFilter-DisassembleFilter-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - AssembleFilter-AssembleFilter-
+trimspace : in.out: - AssembleFilter-AssembleFilter-
+trimspace : in.out: -InstallLighting-InstallLighting-
+trimspace : in.out: -InstallLighting-InstallLighting-
+trimspace : in.out: - 2-2-
+trimspace : in.out: - 2-2-
+trimspace : in.out: - AddHeater-AddHeater-
+trimspace : in.out: - AddHeater-AddHeater-
+trimspace : in.out: - ReplaceLighting-ReplaceLighting-
+trimspace : in.out: - ReplaceLighting-ReplaceLighting-
+trimspace : in.out: -ReplaceLighting-ReplaceLighting-
+trimspace : in.out: -ReplaceLighting-ReplaceLighting-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - InstallLighting-InstallLighting-
+trimspace : in.out: - InstallLighting-InstallLighting-
+trimspace : in.out: -AddHeater-AddHeater-
+trimspace : in.out: -AddHeater-AddHeater-
+trimspace : in.out: - 5-5-
+trimspace : in.out: - 5-5-
+trimspace : in.out: - AddWater-AddWater-
+trimspace : in.out: - AddWater-AddWater-
+trimspace : in.out: - RemoveHeater-RemoveHeater-
+trimspace : in.out: - RemoveHeater-RemoveHeater-
+trimspace : in.out: -RemoveHeater-RemoveHeater-
+trimspace : in.out: -RemoveHeater-RemoveHeater-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - AddHeater-AddHeater-
+trimspace : in.out: - AddHeater-AddHeater-
+trimspace : in.out: -AddWater-AddWater-
+trimspace : in.out: -AddWater-AddWater-
+trimspace : in.out: - 5-5-
+trimspace : in.out: - 5-5-
+trimspace : in.out: - AddRocks-AddRocks-
+trimspace : in.out: - AddRocks-AddRocks-
+trimspace : in.out: - DrainWater-DrainWater-
+trimspace : in.out: - DrainWater-DrainWater-
+trimspace : in.out: -DrainWater-DrainWater-
+trimspace : in.out: -DrainWater-DrainWater-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - AddWater-AddWater-
+trimspace : in.out: - AddWater-AddWater-
+trimspace : in.out: -AddRocks-AddRocks-
+trimspace : in.out: -AddRocks-AddRocks-
+trimspace : in.out: - 8-8-
+trimspace : in.out: - 8-8-
+trimspace : in.out: - AddFish-AddFish-
+trimspace : in.out: - AddFish-AddFish-
+trimspace : in.out: - RemoveRocks-RemoveRocks-
+trimspace : in.out: - RemoveRocks-RemoveRocks-
+trimspace : in.out: -RemoveRocks-RemoveRocks-
+trimspace : in.out: -RemoveRocks-RemoveRocks-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - AddRocks-AddRocks-
+trimspace : in.out: - AddRocks-AddRocks-
+trimspace : in.out: - AddFish-AddFish-
+trimspace : in.out: - AddFish-AddFish-
+trimspace : in.out: -AddFish-AddFish-
+trimspace : in.out: -AddFish-AddFish-
+trimspace : in.out: - 10-10-
+trimspace : in.out: - 10-10-
+trimspace : in.out: - AddCoral-AddCoral-
+trimspace : in.out: - AddCoral-AddCoral-
+trimspace : in.out: - CatchFish-CatchFish-
+trimspace : in.out: - CatchFish-CatchFish-
+trimspace : in.out: -CatchFish-CatchFish-
+trimspace : in.out: -CatchFish-CatchFish-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - AddFish-AddFish-
+trimspace : in.out: - AddFish-AddFish-
+trimspace : in.out: - AddCoral-AddCoral-
+trimspace : in.out: - AddCoral-AddCoral-
+trimspace : in.out: -AddCoral-AddCoral-
+trimspace : in.out: -AddCoral-AddCoral-
+trimspace : in.out: - 5-5-
+trimspace : in.out: - 5-5-
+trimspace : in.out: - AddToys-AddToys-
+trimspace : in.out: - AddToys-AddToys-
+trimspace : in.out: - RemoveCoral-RemoveCoral-
+trimspace : in.out: - RemoveCoral-RemoveCoral-
+trimspace : in.out: -RemoveCoral-RemoveCoral-
+trimspace : in.out: -RemoveCoral-RemoveCoral-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - AddCoral-AddCoral-
+trimspace : in.out: - AddCoral-AddCoral-
+trimspace : in.out: - AddToys-AddToys-
+trimspace : in.out: - AddToys-AddToys-
+trimspace : in.out: -AddToys-AddToys-
+trimspace : in.out: -AddToys-AddToys-
+trimspace : in.out: - 4-4-
+trimspace : in.out: - 4-4-
+trimspace : in.out: -RemoveToys-RemoveToys-
+trimspace : in.out: -RemoveToys-RemoveToys-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - 1-1-
+~SetupTank~~2~~AddGravel~
+~RemoveTank~~1~~SetupTank~
+~AddGravel~~5~~AssembleFilter~~RemoveGravel~
+~RemoveGravel~~1~~AddGravel~
+~AssembleFilter~~5~~InstallLighting~~DisassembleFilter~
+~DisassembleFilter~~1~~AssembleFilter~
+~InstallLighting~~2~~AddHeater~~ReplaceLighting~
+~ReplaceLighting~~1~~InstallLighting~
+~AddHeater~~5~~AddWater~~RemoveHeater~
+~RemoveHeater~~1~~AddHeater~
+~AddWater~~5~~AddRocks~~DrainWater~
+~DrainWater~~1~~AddWater~
+~AddRocks~~8~~AddFish~~RemoveRocks~
+~RemoveRocks~~1~~AddRocks~~AddFish~
+~AddFish~~10~~AddCoral~~CatchFish~
+~CatchFish~~1~~AddFish~~AddCoral~
+~AddCoral~~5~~AddToys~~RemoveCoral~
+~RemoveCoral~~1~~AddCoral~~AddToys~
+~AddToys~~4~
+~RemoveToys~~1~
+task: name/slots/pass/fail =SetupTank/2/AddGravel//
+task: name/slots/pass/fail =RemoveTank/1/SetupTank//
+task: name/slots/pass/fail =AddGravel/5/AssembleFilter/RemoveGravel/
+task: name/slots/pass/fail =RemoveGravel/1/AddGravel//
+task: name/slots/pass/fail =AssembleFilter/5/InstallLighting/DisassembleFilter/
+task: name/slots/pass/fail =DisassembleFilter/1/AssembleFilter//
+task: name/slots/pass/fail =InstallLighting/2/AddHeater/ReplaceLighting/
+task: name/slots/pass/fail =ReplaceLighting/1/InstallLighting//
+task: name/slots/pass/fail =AddHeater/5/AddWater/RemoveHeater/
+task: name/slots/pass/fail =RemoveHeater/1/AddHeater//
+task: name/slots/pass/fail =AddWater/5/AddRocks/DrainWater/
+task: name/slots/pass/fail =DrainWater/1/AddWater//
+task: name/slots/pass/fail =AddRocks/8/AddFish/RemoveRocks/
+task: name/slots/pass/fail =RemoveRocks/1/AddRocks/AddFish/
+task: name/slots/pass/fail =AddFish/10/AddCoral/CatchFish/
+task: name/slots/pass/fail =CatchFish/1/AddFish/AddCoral/
+task: name/slots/pass/fail =AddCoral/5/AddToys/RemoveCoral/
+task: name/slots/pass/fail =RemoveCoral/1/AddCoral/AddToys/
+task: name/slots/pass/fail =AddToys/4///
+task: name/slots/pass/fail =RemoveToys/1///
+dot -Tpng FishTankTasks.dat.gv >FishTankTasks.dat.gv.png
+amesasuarez@matrix:~/OOP345/Milestones/MS2> dump FishTankTasks.dat "," 
+filename='FishTankTasks.dat
+'separator=',
+'trimspace : in.out: -SetupTank-SetupTank-
+trimspace : in.out: -SetupTank-SetupTank-
+trimspace : in.out: - 2-2-
+trimspace : in.out: - 2-2-
+trimspace : in.out: - AddGravel-AddGravel-
+trimspace : in.out: - AddGravel-AddGravel-
+trimspace : in.out: -RemoveTank-RemoveTank-
+trimspace : in.out: -RemoveTank-RemoveTank-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - SetupTank-SetupTank-
+trimspace : in.out: - SetupTank-SetupTank-
+trimspace : in.out: -AddGravel-AddGravel-
+trimspace : in.out: -AddGravel-AddGravel-
+trimspace : in.out: - 5-5-
+trimspace : in.out: - 5-5-
+trimspace : in.out: - AssembleFilter-AssembleFilter-
+trimspace : in.out: - AssembleFilter-AssembleFilter-
+trimspace : in.out: - RemoveGravel-RemoveGravel-
+trimspace : in.out: - RemoveGravel-RemoveGravel-
+trimspace : in.out: -RemoveGravel-RemoveGravel-
+trimspace : in.out: -RemoveGravel-RemoveGravel-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - AddGravel-AddGravel-
+trimspace : in.out: - AddGravel-AddGravel-
+trimspace : in.out: -AssembleFilter-AssembleFilter-
+trimspace : in.out: -AssembleFilter-AssembleFilter-
+trimspace : in.out: - 5-5-
+trimspace : in.out: - 5-5-
+trimspace : in.out: - InstallLighting-InstallLighting-
+trimspace : in.out: - InstallLighting-InstallLighting-
+trimspace : in.out: - DisassembleFilter-DisassembleFilter-
+trimspace : in.out: - DisassembleFilter-DisassembleFilter-
+trimspace : in.out: -DisassembleFilter-DisassembleFilter-
+trimspace : in.out: -DisassembleFilter-DisassembleFilter-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - AssembleFilter-AssembleFilter-
+trimspace : in.out: - AssembleFilter-AssembleFilter-
+trimspace : in.out: -InstallLighting-InstallLighting-
+trimspace : in.out: -InstallLighting-InstallLighting-
+trimspace : in.out: - 2-2-
+trimspace : in.out: - 2-2-
+trimspace : in.out: - AddHeater-AddHeater-
+trimspace : in.out: - AddHeater-AddHeater-
+trimspace : in.out: - ReplaceLighting-ReplaceLighting-
+trimspace : in.out: - ReplaceLighting-ReplaceLighting-
+trimspace : in.out: -ReplaceLighting-ReplaceLighting-
+trimspace : in.out: -ReplaceLighting-ReplaceLighting-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - InstallLighting-InstallLighting-
+trimspace : in.out: - InstallLighting-InstallLighting-
+trimspace : in.out: -AddHeater-AddHeater-
+trimspace : in.out: -AddHeater-AddHeater-
+trimspace : in.out: - 5-5-
+trimspace : in.out: - 5-5-
+trimspace : in.out: - AddWater-AddWater-
+trimspace : in.out: - AddWater-AddWater-
+trimspace : in.out: - RemoveHeater-RemoveHeater-
+trimspace : in.out: - RemoveHeater-RemoveHeater-
+trimspace : in.out: -RemoveHeater-RemoveHeater-
+trimspace : in.out: -RemoveHeater-RemoveHeater-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - AddHeater-AddHeater-
+trimspace : in.out: - AddHeater-AddHeater-
+trimspace : in.out: -AddWater-AddWater-
+trimspace : in.out: -AddWater-AddWater-
+trimspace : in.out: - 5-5-
+trimspace : in.out: - 5-5-
+trimspace : in.out: - AddRocks-AddRocks-
+trimspace : in.out: - AddRocks-AddRocks-
+trimspace : in.out: - DrainWater-DrainWater-
+trimspace : in.out: - DrainWater-DrainWater-
+trimspace : in.out: -DrainWater-DrainWater-
+trimspace : in.out: -DrainWater-DrainWater-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - AddWater-AddWater-
+trimspace : in.out: - AddWater-AddWater-
+trimspace : in.out: -AddRocks-AddRocks-
+trimspace : in.out: -AddRocks-AddRocks-
+trimspace : in.out: - 8-8-
+trimspace : in.out: - 8-8-
+trimspace : in.out: - AddFish-AddFish-
+trimspace : in.out: - AddFish-AddFish-
+trimspace : in.out: - RemoveRocks-RemoveRocks-
+trimspace : in.out: - RemoveRocks-RemoveRocks-
+trimspace : in.out: -RemoveRocks-RemoveRocks-
+trimspace : in.out: -RemoveRocks-RemoveRocks-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - AddRocks-AddRocks-
+trimspace : in.out: - AddRocks-AddRocks-
+trimspace : in.out: - AddFish-AddFish-
+trimspace : in.out: - AddFish-AddFish-
+trimspace : in.out: -AddFish-AddFish-
+trimspace : in.out: -AddFish-AddFish-
+trimspace : in.out: - 10-10-
+trimspace : in.out: - 10-10-
+trimspace : in.out: - AddCoral-AddCoral-
+trimspace : in.out: - AddCoral-AddCoral-
+trimspace : in.out: - CatchFish-CatchFish-
+trimspace : in.out: - CatchFish-CatchFish-
+trimspace : in.out: -CatchFish-CatchFish-
+trimspace : in.out: -CatchFish-CatchFish-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - AddFish-AddFish-
+trimspace : in.out: - AddFish-AddFish-
+trimspace : in.out: - AddCoral-AddCoral-
+trimspace : in.out: - AddCoral-AddCoral-
+trimspace : in.out: -AddCoral-AddCoral-
+trimspace : in.out: -AddCoral-AddCoral-
+trimspace : in.out: - 5-5-
+trimspace : in.out: - 5-5-
+trimspace : in.out: - AddToys-AddToys-
+trimspace : in.out: - AddToys-AddToys-
+trimspace : in.out: - RemoveCoral-RemoveCoral-
+trimspace : in.out: - RemoveCoral-RemoveCoral-
+trimspace : in.out: -RemoveCoral-RemoveCoral-
+trimspace : in.out: -RemoveCoral-RemoveCoral-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - AddCoral-AddCoral-
+trimspace : in.out: - AddCoral-AddCoral-
+trimspace : in.out: - AddToys-AddToys-
+trimspace : in.out: - AddToys-AddToys-
+trimspace : in.out: -AddToys-AddToys-
+trimspace : in.out: -AddToys-AddToys-
+trimspace : in.out: - 4-4-
+trimspace : in.out: - 4-4-
+trimspace : in.out: -RemoveToys-RemoveToys-
+trimspace : in.out: -RemoveToys-RemoveToys-
+trimspace : in.out: - 1-1-
+trimspace : in.out: - 1-1-
+amesasuarez@matrix:~/OOP345/Milestones/MS2> cat FishTasks.dat.gv
+digraph taskGraph {
+"SetupTank"->"AddGravel" [color=green];
+"RemoveTank"->"SetupTank" [color=green];
+"AddGravel"->"RemoveGravel" [color=red];
+"AddGravel"->"AssembleFilter" [color=green];
+"RemoveGravel"->"AddGravel" [color=green];
+"AssembleFilter"->"DisassembleFilter" [color=red];
+"AssembleFilter"->"InstallLighting" [color=green];
+"DisassembleFilter"->"AssembleFilter" [color=green];
+"InstallLighting"->"ReplaceLighting" [color=red];
+"InstallLighting"->"AddHeater" [color=green];
+"ReplaceLighting"->"InstallLighting" [color=green];
+"AddHeater"->"RemoveHeater" [color=red];
+"AddHeater"->"AddWater" [color=green];
+"RemoveHeater"->"AddHeater" [color=green];
+"AddWater"->"DrainWater" [color=red];
+"AddWater"->"AddRocks" [color=green];
+"DrainWater"->"AddWater" [color=green];
+"AddRocks"->"RemoveRocks" [color=red];
+"AddRocks"->"AddFish" [color=green];
+"RemoveRocks"->"AddFish" [color=red];
+"RemoveRocks"->"AddRocks" [color=green];
+"AddFish"->"CatchFish" [color=red];
+"AddFish"->"AddCoral" [color=green];
+"CatchFish"->"AddCoral" [color=red];
+"CatchFish"->"AddFish" [color=green];
+"AddCoral"->"RemoveCoral" [color=red];
+"AddCoral"->"AddToys" [color=green];
+"RemoveCoral"->"AddToys" [color=red];
+"RemoveCoral"->"AddCoral" [color=green];
+AddToys
+RemoveToys
+}
+amesasuarez@matrix:~/OOP345/Milestones/MS2> exit
+exit
+Script done on Sun 02 Apr 2017 02:31:25 PM EDT

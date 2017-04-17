@@ -1,0 +1,440 @@
+Script started on Wed 05 Apr 2017 01:53:56 PM EDT
+amesasuarez@matrix:~/OOP345/Milestones/MS3> whoami
+amesasuarez
+amesasuarez@matrix:~/OOP345/Milestones/MS3> cat item.cpp order.cpp uti.cpp
+
+/* 
+OOP345
+Milestone # 3
+Date     : 04/01/17
+Author   : Alejandro Mesa
+Student# : 038515151
+Email    : amesasuarez@myseneca.ca 
+*/
+
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
+#include "util.h"
+using namespace std;
+
+class Item {
+	std::string itemName, installer, remover, code, description;
+	bool validCode(string code) {
+		//if (!slots.size()) return 0;
+		bool result = false;
+		for (int i = 0; i < (int)code.size(); i++) {
+			if (code.size() && isdigit(code[i]))
+				result = true;
+		}
+		return result;
+	}
+
+public:
+	Item(vector<string>field) {
+		switch (field.size()) {
+		case 5:
+			description = field[4];
+		case 4:
+			if (validCode(field[3])) {
+				code = field[3];
+			}
+			else {
+				throw string("expected a code , found a ") + field[3];
+			}
+			if (validTaskName(field[2]))
+				remover = field[2];
+			else
+				throw string("expected a remover, found a ") + field[2];
+			if (validTaskName(field[1]))
+				installer = field[1];
+			else
+				throw string("expected a installer, found a ") + field[1];
+			if (validItemName(field[0]))
+				itemName = field[0];
+			else
+				throw string("expected a name, found a ") + field[0];
+			break;
+		default:
+			throw string("expected 4 or 5 fields, found ") + to_string(field.size());
+		}
+	}
+	void print() {
+		cout << "itemName, installer, remover, code, [description] = "
+			<< itemName << ","
+			<< installer << ","
+			<< remover << ","
+			<< code << ",";
+		if (!description.empty())
+			cout << description << ",";
+		cout << endl;
+	}
+	void graph(ofstream& os) {
+		auto f = [&os](string symbol) {os << '"' << symbol << '"'; };
+		f("Item: " + itemName);
+		os << "->";
+		f(installer);
+		os << "[color=green];" << endl;
+		f("Item: " + itemName);
+		os << "->";
+		f(remover);
+		os << "[color=red];" << endl;
+	}
+};
+
+class ItemManager {
+	vector<Item> ItemList;
+public:
+	ItemManager(vector<vector<string> > & csvdata) {
+		int line = 0;
+		for (auto field : csvdata) {
+			try {
+				line++;
+				ItemList.push_back(Item(field));
+			}
+			catch (string& e) {
+				cerr << "Problem with line " << line << endl;
+				cerr << e << endl;
+			}
+		}
+	}
+	void print() {
+		for (auto t : ItemList) {
+			t.print();
+		}
+	}
+	void graph(string filename) {
+		ofstream of(filename + ".gv");         //save digrapgh file with .gv extension
+		if (of.is_open()) {
+			of << "digraph myGraph{\n";
+			for (auto t : ItemList) {
+				t.graph(of);
+			}
+			of << "}\n";
+			of.close();
+		}
+		//string cmd = "dot -Tpng " + filename + ".gv > " + filename + ".gv.png";       
+		// create a graphic file and save it to a new file with extension .gv.png
+		#ifdef __unix
+			string dot = "dot";
+		#else
+			string dot = "C:/\"Program Files (x86)\"/Graphviz2.38/bin/dot.exe";
+		#endif
+			string cmd = dot + " -Tpng " + filename + ".gv >" + filename + ".gv.png";
+			cout << cmd << "\n";
+			system(cmd.c_str());
+	}
+};
+
+int main(int argc, char* argv[]) {
+	try {
+		if (argc != 3)
+			throw string(argv[0]) + " need two arg the csv file name, and the csv separator";
+		string taskfilename = argv[1];
+		char separator = argv[2][0];
+		vector<vector<string>> csvtaskdata;
+		readcsv(taskfilename, separator, csvtaskdata);
+		//printcsv(csvdata);  // everything is fine with csvread
+		ItemManager tm(csvtaskdata);
+		tm.print();
+		tm.graph(taskfilename);
+	}
+	catch (const string& e) {
+		cerr << e << "\n";
+	}
+}
+
+
+/* 
+OOP345
+Milestone # 3
+Date     : 04/01/17
+Author   : Alejandro Mesa
+Student# : 038515151
+Email    : amesasuarez@myseneca.ca 
+*/
+
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
+#include "util.h"
+using namespace std;
+
+class Order {
+	std::string customer, product;
+	std::vector<std::string> itemList;
+public:
+	Order(vector<string>field) {
+		if (field.size() >= 3) {
+			if (validCustomerName(field[0]))
+				customer = field[0];
+			else
+				throw string("expected customer name, found a ") + field[0];
+			if (validProductName(field[1]))
+				product = field[1];
+			else
+				throw string("expected product name, found a ") + field[0];
+			for (int i = 2; i < (int)field.size(); i++) {
+				if (validItemName(field[i])) {
+					itemList.push_back(field[i]);
+				}
+				else
+					throw string("expected an item, found a ") + field[0];
+			}
+		}
+		else {
+			throw string("expected minimum 3 fields, found ") + to_string(field.size());
+		}
+	}
+	void print() {
+		cout << "customer, product, itemList = "
+			<< customer << " | " << product << " | ";
+		for (int i = 0; i < (int)itemList.size(); i++) {
+			cout << itemList[i];
+			if (i + 1 < (int)itemList.size())
+				cout << " | ";
+		}
+		cout << endl;
+	}
+	void graph(ofstream& os) {
+		auto f = [&os](string symbol) {os << '"' << symbol << '"'; };
+		for (int i = 0; i < (int)itemList.size(); i++) {
+			f(customer);
+			os << "->";
+			f(itemList[i]);
+			os << "[color=green];" << endl;
+		}
+	}
+};
+
+class  OrderManager {
+	std::vector<Order> OrderList;
+public:
+	OrderManager(vector<vector<string> > & csvdata) {
+		int line = 0;
+		for (auto field : csvdata) {
+			try {
+                line++;
+				OrderList.push_back(Order(field));
+			}
+			catch (string& e) {
+				cerr << "Problem with line " << line << endl;
+				cerr << e << endl;
+			}
+		}
+	}
+	void print() {
+		for (auto t : OrderList) {
+			t.print();
+		}
+	}
+	void graph(string filename) {
+		ofstream of(filename + ".gv");         //save digrapgh file with .gv extension
+		if (of.is_open()) {
+			of << "digraph myGraph{\n";
+			for (auto t : OrderList) {
+				t.graph(of);
+			}
+			of << "}\n";
+			of.close();
+		}
+		#ifdef __unix
+		string dot = "dot";
+		#else
+		string dot = "C:/\"Program Files (x86)\"/Graphviz2.38/bin/dot.exe";
+		#endif
+		string cmd = dot + " -Tpng " + filename + ".gv >" + filename + ".gv.png";
+		cout << cmd << "\n";
+		system(cmd.c_str());
+	}
+};
+
+int main(int argc, char* argv[]) {
+	try {
+		if (argc != 3)
+			throw string(argv[0]) + " need two arg the csv file name, and the csv separator";
+		string taskfilename = argv[1];
+		char separator = argv[2][0];
+		vector<vector<string>> csvtaskdata;
+		readcsv(taskfilename, separator, csvtaskdata);
+		//printcsv(csvdata);  // everything is fine with csvread
+		OrderManager tm(csvtaskdata);
+		tm.print();
+		tm.graph(taskfilename);
+	}
+	catch (const string& e) {
+		cerr << e << "\n";
+	}
+}
+
+/* 
+OOP345
+Milestone # 3
+Date     : 04/01/17
+Author   : Alejandro Mesa
+Student# : 038515151
+Email    : amesasuarez@myseneca.ca 
+*/
+
+#include "util.h"
+using namespace std;
+bool validTaskName(string name) {
+	bool result = false;
+	if (name.size() && isalpha(name[0])) {
+		result = true;
+	}
+	return result;
+}
+bool validItemName(string name) {
+	bool result = false;
+	if (name.size() && isalpha(name[0])) {
+		result = true;
+	}
+	return result;
+}
+bool validCustomerName(string name) {
+	bool result = false;
+	if (name.size() && isalpha(name[0])) {
+		result = true;
+	}
+	return result;
+}
+bool validProductName(string name) {
+	bool result = false;
+	if (name.size() && isalpha(name[0])) {
+		result = true;
+	}
+	return result;
+}
+
+void printcsv(vector <vector<string>>& csvdata) {
+	////loop using indeces
+	//for (int line = 0; line < csvdata.size(); line++){
+	//	for (int column = 0; column < csvdata[line].size(); column++){
+	//		cout << "[" << csvdata[line][column] << "]";
+	//	}
+	//	cout << endl;
+	//}
+	//cout << endl;
+	////loop with iterators
+	//for (auto line = csvdata.begin(); line != csvdata.end(); line++){
+	//	for (auto column = line->begin(); column <line->end(); column++){
+	//		cout << "<" << *column << ">";
+	//	}
+	//	cout << endl;
+	//}
+	//cout << endl;
+	// loop using range-based
+	for (auto line : csvdata) {
+		for (auto column : line) {
+			cout << "{" << column << "}";
+		}
+		cout << endl;
+	}
+	cout << endl;
+}
+
+void trimSpaces(string& s) {
+	//while (s.size() && s[0] == ' '){                  // trim leading spaces             
+	while (s.size() && isspace(s[0])) {
+		s.erase(0, 1);
+	}
+	//while (s.size() && s[s.size() - 1] == ' '){       //trim trailing spaces
+	while (s.size() && isspace(s[s.size() - 1])) {
+		s.erase(s.size() - 1, 1);
+	}
+}
+
+void readcsv(string& filename, char delimeter, vector <vector<string>>& csvdata) {
+	ifstream is(filename);
+	if (!is.is_open()) {
+		throw ("Cannot open file ") + filename;
+	}
+	//int count = 0;
+	string line;
+	while (getline(is, line)) {
+		auto cr = line.find('\r');
+		if (cr != string::npos) {
+			line.erase(cr);
+		}
+		string field;
+		unsigned column = 0;
+		//int numField = 0;
+		vector<string> columnData;
+		trimSpaces(line);
+		if (line.size()) {                                 //save only non-empty line
+														   //cout << "line" << ++count << ":" << line << endl;
+			while (column < line.size()) {
+				if (line[column] == delimeter) {
+					column++;                             // skip delimeter
+					trimSpaces(field);
+					if (!field.empty()) {
+						//cout << "field" << ++numField << "= " << field << endl;
+						columnData.push_back(field);
+					}
+					field.clear();
+				}
+				field += line[column];
+				column++;
+			}
+			trimSpaces(field);                            //last record 
+			if (!field.empty() && (int)field[0]) {         //only save non-empty field to inner vector
+														   //cout << "field" << ++numField << "= " << field << endl;
+				columnData.push_back(field);
+			}
+			field.clear();
+			if (!columnData.empty()) {                    //only save non-empty vector to outer vector
+				csvdata.push_back(columnData);
+			}
+			columnData.clear();
+			//cout << endl;
+		}
+	}
+	is.close();
+}
+amesasuarez@matrix:~/OOP345/Milestones/MS3>   g++ -o item -std=c++0x item.cpp util.cpp
+amesasuarez@matrix:~/OOP345/Milestones/MS3>   g++ -o order -std=c++0x order.cpp util.cpp
+amesasuarez@matrix:~/OOP345/Milestones/MS3> item ItemList.dat "|"
+itemName, installer, remover, code, [description] = CPU,CPU,Remove CPU,300,Central Processing Unit,
+itemName, installer, remover, code, [description] = Memory,Memory,Remove Memory,400,Samsung Memory Stick,
+itemName, installer, remover, code, [description] = GPU,GPU,Remove GPU,500,Nvidia Geforce 750M,
+itemName, installer, remover, code, [description] = Power Supply,Power Supply,Remove Power Supply,100,
+dot -Tpng ItemList.dat.gv >ItemList.dat.gv.png
+amesasuarez@matrix:~/OOP345/Milestones/MS3> order Orders.dat "|"
+customer, product, itemList = Fardad Soleimanloo | Dell Precision 3600 | CPU | Memory | Memory
+customer, product, itemList = Joseph Hughes | HP Z230 | CPU | Memory
+customer, product, itemList = Chris Szalwinski | HP Z350 | CPU | Memory | SSD | GPU
+customer, product, itemList = Elliott Coleshill | HP Apollo 1000 | CPU | MEMORY | Power Supply | GPU
+dot -Tpng Orders.dat.gv >Orders.dat.gv.png
+amesasuarez@matrix:~/OOP345/Milestones/MS3>cat ItemList.dat.gv
+digraph myGraph{
+"Item: CPU"->"CPU"[color=green];
+"Item: CPU"->"Remove CPU"[color=red];
+"Item: Memory"->"Memory"[color=green];
+"Item: Memory"->"Remove Memory"[color=red];
+"Item: GPU"->"GPU"[color=green];
+"Item: GPU"->"Remove GPU"[color=red];
+"Item: Power Supply"->"Power Supply"[color=green];
+"Item: Power Supply"->"Remove Power Supply"[color=red];
+}
+amesasuarez@matrix:~/OOP345/Milestones/MS3> cat Orders.dat.gv
+digraph myGraph{
+"Fardad Soleimanloo"->"CPU"[color=green];
+"Fardad Soleimanloo"->"Memory"[color=green];
+"Fardad Soleimanloo"->"Memory"[color=green];
+"Joseph Hughes"->"CPU"[color=green];
+"Joseph Hughes"->"Memory"[color=green];
+"Chris Szalwinski"->"CPU"[color=green];
+"Chris Szalwinski"->"Memory"[color=green];
+"Chris Szalwinski"->"SSD"[color=green];
+"Chris Szalwinski"->"GPU"[color=green];
+"Elliott Coleshill"->"CPU"[color=green];
+"Elliott Coleshill"->"MEMORY"[color=green];
+"Elliott Coleshill"->"Power Supply"[color=green];
+"Elliott Coleshill"->"GPU"[color=green];
+}
+amesasuarez@matrix:~/OOP345/Milestones/MS3> exit
+exit
+Script done on Wed 05 Apr 2017 01:56:20 PM EDT
