@@ -11,6 +11,6 @@ Seneca Courses
 * __2A - Business Systems__ - Create Business Models with UML
 * __2A - SQL Advanced__ - SQL Advanced Subjects using Oracle
 * __2A - Web with PHP & MySQL__ - Web Programming focusing on PHP & MySQL interaction
-* __2B - Business System Advanced__ - *NEXT SEMESTER*
-* __2B - Java Introduction__ - *NEXT SEMESTER*
-* __2B - Web with ASP.NET__ - *NEXT SEMESTER*
+* __2B - Business System Advanced__ - *Currently taking*
+* __2B - Java Introduction__ - *Currently taking*
+* __2B - Web with ASP.NET__ - *Currently taking*
