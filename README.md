@@ -5,7 +5,7 @@ Seneca Courses
 * __1A - C Introduction__ - Learn the basics of programming with C.
 * __1B - C++ Object Oriented__ - Learn OOP Approach with C++.
 * __1B - iSeries COmputing__ - Learn iSeries (RPG,CLE) in order to create business solutions
-* __1B - Nutrition__ - General Education Course (I like the nutrition & health subject)
+* __1B - Nutrition__ - General Education Course (I like nutrition & health subjects)
 * __1B - SQL Introduction__ - Learn introductory SQL
 * __1B - Web Introduction__ - Basics of HTML, CSS and Javascript
 * __2A - Business Systems__ - Create Business Models with UML
