@@ -1,0 +1,34 @@
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\App_Data\Chinook.mdf
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\App_Data\Chinook_log.ldf
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\Web app project template v1.dll.config
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\Web app project template v1.dll
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\Web app project template v1.pdb
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\Antlr3.Runtime.dll
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\AutoMapper.dll
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\EntityFramework.dll
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\EntityFramework.SqlServer.dll
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\Newtonsoft.Json.dll
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\System.Web.Helpers.dll
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\System.Web.Mvc.dll
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\System.Web.Optimization.dll
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\System.Web.Razor.dll
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\System.Web.WebPages.dll
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\System.Web.WebPages.Razor.dll
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\WebGrease.dll
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\Antlr3.Runtime.pdb
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\AutoMapper.xml
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\EntityFramework.xml
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\EntityFramework.SqlServer.xml
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\Newtonsoft.Json.xml
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\System.Web.Helpers.xml
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\System.Web.Mvc.xml
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\System.Web.Optimization.xml
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\System.Web.Razor.xml
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\System.Web.WebPages.xml
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\bin\System.Web.WebPages.Razor.xml
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\obj\Debug\Assignment 3 Final.csprojResolveAssemblyReference.cache
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\obj\Debug\Web app project template v1.dll
+C:\Users\Ale\Google Drive\Seneca\INT422 - ASP.NET\Assignments\Assignment 3 - Submit - Alejandro Mesa\Assignment 3 Final\obj\Debug\Web app project template v1.pdb
